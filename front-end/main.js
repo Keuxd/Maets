@@ -2,39 +2,41 @@ const { app , BrowserWindow, ipcMain } = require('electron');
 const { ClientRequest } = require('http');
 const path = require('path');
 
-function jaja(mainWindow) {
- // Connect to java backend
- const net = require('net');
- const client = new net.Socket();
+function createClientSocket(mainWindow) {
+    // Connect to java backend
+    const net = require('net');
+    const client = new net.Socket();
 
- client.connect(1234, 'localhost', () => {
-     log('Connected to java backend !')
+    client.connect(1234, 'localhost', () => {
+        log('Connected to java backend !')
 
-     const request = 'Hello from Electron!\r';
-     client.write(request);
- })
+        const request = 'Hello from Electron!\r';
+        client.write(request);
+    })
 
- client.on('data', (data) => {
-     const response = data.toString();
+    client.on('data', (data) => {
+        const response = data.toString();
 
-     mainWindow.webContents.send('java-backend-response', response);
- })
+        mainWindow.webContents.send('java-backend-response', response);
+    })
 
- client.on('close', () => {
-     log('Disconnected from Java backend');
- })
+    client.on('close', () => {
+        log('Disconnected from Java backend');
+    })
 
- client.on('error', (error) => {
-     log('Error in electron: ' + error);
- })
+    client.on('error', (error) => {
+        log('Error in electron: ' + error);
+    })
 
- function log(string) {
-     mainWindow.webContents.send('log-message', string);
- }
+    function log(string) {
+        mainWindow.webContents.send('log-message', string);
+    }
 
- ipcMain.on('send-to-backend', (event, message) => {
-     client.write(message + '\r');
- })
+    ipcMain.on('send-to-backend', (event, message) => {
+        client.write(message + '\r');
+    })
+
+    return client;
 }
 
 function createWindow() {
@@ -52,7 +54,8 @@ function createWindow() {
 
     // WebContents class send handle 'did-finish-load' when html is fully loaded 
     mainWindow.webContents.on('did-finish-load', () => {
-       jaja(mainWindow);
+       var client = createClientSocket(mainWindow);
+       //client.write('html finished load\r');
     })
 }
 
