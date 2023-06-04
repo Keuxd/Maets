@@ -2,7 +2,7 @@
 const { ipcRenderer } = require('electron');
 
 ipcRenderer.on('java-backend-response', (event, response) => {
-    console.log("event back end response2");
+    alert(response);
     const messageElement = document.getElementById('response');
     messageElement.textContent = response;
 });
