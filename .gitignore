@@ -28,3 +28,4 @@ replay_pid*
 
 # Node Dependencies
 node_modules
+/back-end/.gitignore
