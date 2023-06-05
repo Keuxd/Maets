@@ -10,8 +10,7 @@ function createClientSocket(mainWindow) {
     client.connect(1234, 'localhost', () => {
         log('Connected to java backend !')
 
-        const request = 'Hello from Electron!\r';
-        client.write(request);
+        client.write('Handshake from Electron!\r');
     })
 
     client.on('data', (data) => {
@@ -21,7 +20,7 @@ function createClientSocket(mainWindow) {
     })
 
     client.on('close', () => {
-        log('Disconnected from Java backend');
+        log('Server socket closed');
     })
 
     client.on('error', (error) => {
