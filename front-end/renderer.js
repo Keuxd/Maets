@@ -1,8 +1,6 @@
-//window.nodeRequire = require;
 const { ipcRenderer } = require('electron');
 
 ipcRenderer.on('java-backend-response', (event, response) => {
-    alert(response);
     const messageElement = document.getElementById('response');
     messageElement.textContent = response;
 });
