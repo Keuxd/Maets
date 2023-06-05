@@ -31,7 +31,7 @@ public class Electron {
 				BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			
 				String message = reader.readLine();
-				System.out.println("\nReceived message: " + message);
+				System.out.println("\n+ Received message: " + message);
 				
 				if(message == null) break;
 			
@@ -53,7 +53,7 @@ public class Electron {
 		try {
 			PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
 			printWriter.println(message);
-			System.out.println("\nSent message: " + message);
+			System.out.println("\n- Sent message: " + message);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
