@@ -1,7 +1,9 @@
 /* Codes reference
     + Login:
         - 0  : Login Success
+        - 2  : Failed to Login: Invalid argument
         - 9  : Login Failed: Invalid email or password
+        - 13 : Login Failed: Unconfirmed account. Please confirm your account
         - 54 : Already logged in. Please log out first.
     
     + Logout:
