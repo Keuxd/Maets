@@ -1,28 +1,27 @@
 const { ipcRenderer } = require('electron');
+const { LoginResponseHandler, isValidEmail } = require('./auth');
 
 ipcRenderer.on('java-backend-response', (event, response) => {
-    const messageElement = document.getElementById('response');
-    messageElement.textContent = response;
+    console.log('Response:', response);
+    LoginResponseHandler.handle(response);
 });
 
-/* ipcRenderer.on('log-message', (event, message) => {
-    const logElement = document.getElementById('log');
-    logElement.textContent = message;
-})
-
-const myButton = document.getElementById('button');
-
-myButton.addEventListener('click', () => {
-    ipcRenderer.send('send-to-backend', 'buttonPress');
-})*/
-
+const loginform = document.querySelector('form');
 const logincard = document.getElementById('logincard');
 const anotherScreen = document.getElementById('anotherScreen');
 const loginButton = document.getElementById('loginButton');
-const loginForm = document.querySelector('form');
+const emailInput = document.getElementById('email');
 
 loginButton.addEventListener('click', () => {
-    logincard.remove;
-    anotherScreen.style.display = 'block';
-    anotherScreen.style.visibility = 'visible';
-  });
+    event.preventDefault();
+    
+    if (loginform.checkValidity() && isValidEmail(emailInput.value)) {
+        logincard.remove();
+        anotherScreen.style.display = 'block';
+    
+        // Enviar solicitação de login para o backend
+        ipcRenderer.send('send-to-backend', 'buttonPress');
+      } else {
+        loginform.reportValidity();
+      }
+    });
