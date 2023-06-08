@@ -40,13 +40,14 @@ function createClientSocket(mainWindow) {
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1280,
+        height: 720,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             //preload: path.join('C:\ElectronTest', 'renderer.js'),
         },
+        resizable: false,
     });
 
     mainWindow.loadFile('main.html');
