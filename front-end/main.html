@@ -3,16 +3,31 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello, Electron + Java</title>
-    <!--link rel="stylesheet" href="styles.css"-->
+    <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body background="./image_contents/spotted_bg.jpg">
+     
+    <div class="logincard">
+        <h1 class="title">Welcome!</h1>
+        <h2 class="subtitle">Login or signup below.</h2>
+        <form>
+          <label for="username" class="attfield">Username:</label>
+          <input type="text" id="username" name="username" class="attinput">
+        
+          <label for="password" class="attfield">Password:</label>
+          <input type="password" id="password" name="password" class="attinput"> <br>
+        
+          <button preventDefault() id="loginButton" type="submit" class="attscreen">Login</button>
+        </form>
+      </div>
 
-    <button id = "button"> Send to backend </button>
-    
+    <div hidden id="anotherScreen" style="display: none;">
+      <h1>Bem-vindo à outra tela!</h1>
+    </div>
+  <!--  <button id = "button"> Send to backend </button>
     <h1 id = "message">C A S S I E</h1>
     <h1 id = "response"> ... </h1>
-    <h1 id = "log"> aaa </ul>
-
+    <h1 id = "log"> aaa </ul> -->
 
     <script src="renderer.js"></script>
   </body>
