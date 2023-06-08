@@ -1,13 +1,79 @@
+@font-face {
+  font-family: my-font;
+  src: url("./fonts/THEBOLDFONT.ttf");
+}
+
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
   }
   
   h1 {
-    text-align: center;
+    text-align: left;
     font-size: 24px;
+  }
+
+  .logincard {
+      display: inline;
+      justify-content: center;
+      background-color: #363636;
+      margin: auto;
+      padding: 0;
+      width: 305px;
+      height: 433px;
+  }
+
+  .title {
+    font-size: 50px;
+    text-align: center;
+    padding: 0;
+    color: #e0d921;
+    font-family: "my-font";
+  }
+
+  .subtitle {
+    font-size: 14.4px;
+    text-align: center;
+    padding: 0px;
+    margin-top: -4.5vh;
+    margin-bottom: 4vh;
+    color: #a0a0a0;
+    font-family: "my-font";
+  }
+
+  .attfield {
+    font-size: 24;
+    font-family: "my-font";
+    color: #e7e7e7;
+    padding: 2vh;
+    padding-top: 6vh;
+    margin-left: 6vh;
+    margin-top: 2vh;
+    margin-bottom: 50px;
+  }
+
+  .attinput{
+    border: 1px solid #5e5e5e;
+    border-radius: 8px;
+    background-color: #5e5e5e;
+    color: #333;
+    padding: 1.5vh;
+    margin-left: 8vh;
+    margin-bottom: 4vh;
+  }
+
+  .attscreen {
+    border: 6px solid #5e5e5e;
+    border-radius: 8px;
+    background-color: #5e5e5e;
+    color: #e7e7e7;
+    padding: 3vh;
+    padding-right: 19vh;
+    padding-bottom: -0.5vh;
+    margin-left: 8vh;
+    font-family: "my-font";
+    font-size: 30;
+    cursor: pointer;
   }
