@@ -7,19 +7,21 @@
   </head>
   <body background="./image_contents/spotted_bg.jpg">
      
-    <div class="logincard">
-        <h1 class="title">Welcome!</h1>
-        <h2 class="subtitle">Login or signup below.</h2>
+    <div id="logincard">
+        <h1 id="title">Welcome!</h1>
+        <h2 id="subtitle">Login or signup below.</h2>
         <form>
           <label for="username" class="attfield">Username:</label>
           <input type="text" id="username" name="username" class="attinput">
         
           <label for="password" class="attfield">Password:</label>
-          <input type="password" id="password" name="password" class="attinput"> <br>
+          <input type="password" id="password" class="attinput" required> <br>
         
-          <button preventDefault() id="loginButton" type="submit" class="attscreen">Login</button>
+          <button id="loginButton" type="submit" class="attscreen">Login</button>
         </form>
-      </div>
+        <div id="response"></div>
+        <div id="error"></div>
+    </div>
 
     <div hidden id="anotherScreen" style="display: none;">
       <h1>Bem-vindo à outra tela!</h1>
