@@ -29,3 +29,5 @@ replay_pid*
 # Node Dependencies
 node_modules
 /back-end/.gitignore
+/back-end/bin/.gitignore
+/.metadata/
