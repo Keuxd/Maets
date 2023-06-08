@@ -11,6 +11,7 @@ const logincard = document.getElementById('logincard');
 const anotherScreen = document.getElementById('anotherScreen');
 const loginButton = document.getElementById('loginButton');
 const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
 
 loginButton.addEventListener('click', () => {
     event.preventDefault();
@@ -20,7 +21,7 @@ loginButton.addEventListener('click', () => {
         anotherScreen.style.display = 'block';
     
         // Enviar solicitação de login para o backend
-        ipcRenderer.send('send-to-backend', 'buttonPress');
+        ipcRenderer.send('send-to-backend', `login ${emailInput} ${passwordInput}`);
       } else {
         loginform.reportValidity();
       }
