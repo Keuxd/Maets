@@ -15,6 +15,12 @@ public class Requests {
 				break;
 			}
 			
+			case "logout" : {
+				int code = Mega.run(CommandsEnum.LOGOUT);
+				Electron.response("logout " + code);
+				break;
+			}
+			
 			case "buttonPress": {
 				butt();
 				break;
