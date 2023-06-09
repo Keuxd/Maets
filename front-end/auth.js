@@ -12,7 +12,6 @@ class LoginResponseHandler {
   static handle(response) {
     const messageElement = document.getElementById('response');
     const errorElement = document.getElementById('error');
-    console.log(message)
     const numericCode = response.code;
     const { message, canProceed } = LoginResponseHandler.responseMessages[numericCode] || { message: 'Unknown error occurred', canProceed: false };
   
