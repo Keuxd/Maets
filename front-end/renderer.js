@@ -16,10 +16,13 @@ ipcRenderer.on('java-backend-response', (event, response) => {
   
       if (loginResponseCode === '0') {
         console.log(`${emailInput.value} ${passwordInput.value}`)
-        logincard.remove();
-        anotherScreen.style.display = 'block';
+        loadscreen.style.visibility = 'hidden';
+        logincard.style.visibility = 'hidden';
+        anotherScreen.style.visibility = 'visible';
       } else {
         loginform.reportValidity();
+        loadscreen.style.visibility = 'hidden';
+        logincard.style.visibility = 'visible';
       }
     }
     console.log('logincode:', loginResponseCode);
@@ -27,6 +30,7 @@ ipcRenderer.on('java-backend-response', (event, response) => {
 
 const loginform = document.querySelector('form');
 const logincard = document.getElementById('logincard');
+const loadscreen = document.getElementById('loadingScreen');
 const anotherScreen = document.getElementById('anotherScreen');
 const loginButton = document.getElementById('loginButton');
 const logoutButton = document.getElementById('logoutButton');
@@ -41,6 +45,9 @@ loginButton.addEventListener('click', (event) => {
     event.preventDefault();
     
     if (loginform.checkValidity() && isValidEmail(emailInput.value)) {
+      logincard.style.visibility = 'hidden';
+      loadscreen.style.visibility = 'visible;'
+
         ipcRenderer.send('send-to-backend', `login ${emailInput.value} ${passwordInput.value}`);
       } else {
         loginform.reportValidity();

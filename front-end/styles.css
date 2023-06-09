@@ -91,3 +91,11 @@ body {
     font-size: 20px;
     cursor: pointer;
   }
+  
+  #loading {
+    font-size: 50px;
+    text-align: center;
+    padding: 0;
+    color: #e0d921;
+    font-family: "my-font";
+  }
