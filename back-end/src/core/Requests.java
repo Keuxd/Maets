@@ -21,19 +21,11 @@ public class Requests {
 				break;
 			}
 			
-			case "buttonPress": {
-				butt();
-				break;
-			}
-			
-			case "Handshake from Electron!": {
-				Electron.response("Handshake from Java!");
+			case "isLoggedIn": {
+				int code = Mega.run(CommandsEnum.USERS);
+				Electron.response("isLoggedIn " + (code == 0));
 				break;
 			}
 		}
-	}
-	
-	private static void butt() {
-		Electron.response("Button Press Received !!");
 	}
 }
