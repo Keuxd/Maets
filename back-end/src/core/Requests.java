@@ -26,6 +26,12 @@ public class Requests {
 				Electron.response("isLoggedIn " + (code == 0));
 				break;
 			}
+			
+			case "mega" : {
+				int code = Mega.run(CommandsEnum.VERSION);
+				Electron.response("mega " + code);
+				break;
+			}
 		}
 	}
 }

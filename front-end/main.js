@@ -57,4 +57,5 @@ function createWindow(isloggedIn) {
 app.whenReady().then(() => {
     const mainWindow = createWindow();
     const client = createClientSocket(mainWindow);
+    client.write("mega\r");
 });
