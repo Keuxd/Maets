@@ -64,7 +64,7 @@ public class Electron {
 	private static void resetConnection() {
 		try {
 			clientSocket.close();
-			serverSocket.close();			
+			serverSocket.close();
 
 			clientSocket = null;
 			serverSocket = null;
