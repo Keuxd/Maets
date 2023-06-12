@@ -2,41 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello, Electron + Java</title>
+    <title>Maets</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body background="./image_contents/spotted_bg.jpg">
-     
-    <div id="logincard">
-        <h1 id="title">Welcome!</h1>
-        <h2 id="subtitle">Login or signup below.</h2>
-        <form>
-          <label for="username" class="attfield">Email:</label>
-          <input type="text" id="email" class="attinput" required>
-        
-          <label for="password" class="attfield">Password:</label>
-          <input type="password" id="password" class="attinput" required><br>
-        
-          <button id="loginButton" type="button" class="attscreen">Login</button>
-        </form>        
-        <div id="message"></div>
-        <div id="response"></div>
-        <div id="error"></div>
-    </div>
 
-    <div hidden id="loadingScreen">
-    <h1 id="loading">Loading</h1>
+    <div id="loadingScreen">
+      <h1 id="loading">Loading</h1>
     </div>
-
+    
     <div hidden id="anotherScreen">
       <h1>Bem-vindo à outra tela!</h1>
       <button id="logoutButton" type="submit" class="test">Logout</button>
     </div>
-  <!--  <button id = "button"> Send to backend </button>
-    <h1 id = "message">C A S S I E</h1>
-    <h1 id = "response"> ... </h1>
-    <h1 id = "log"> aaa </ul> -->
 
     <script src="renderer.js"></script>
+    
   </body>
 </html>
