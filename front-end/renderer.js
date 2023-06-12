@@ -19,9 +19,13 @@ ipcRenderer.on('java-backend-response', (event, response) => {
             }
             break;
 
-        case 'isLoggedIn' : 
+        case 'isLoggedIn' :
             if(response[1] === 'true') showAnotherScreen();
             else invokeLoginCard();
+            break;
+
+        case "mega" :
+            ipcRenderer.send("send-to-backend", "isLoggedIn");
             break;
     }
 });
