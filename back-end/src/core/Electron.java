@@ -32,9 +32,6 @@ public class Electron {
 			
 			Thread electronListener = new Thread(() -> {
 				try {
-					int code = Mega.run(CommandsEnum.VERSION);
-					Electron.response("mega " + code);
-					
 					while(true) {
 						BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 						
@@ -47,12 +44,12 @@ public class Electron {
 						Requests.process(message);
 					}
 					System.out.println("Stop listening to: " + clientSocket.getInetAddress());
-//					Mega.run(CommandsEnum.QUIT);
+					Mega.run(CommandsEnum.QUIT);
 				} catch(IOException e) {
 					e.printStackTrace();
 				} finally {
 					resetConnection();
-					initTCPConnection();
+//					initTCPConnection();
 				}
 			});
 			
