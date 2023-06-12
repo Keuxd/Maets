@@ -1,6 +1,4 @@
 const { app , BrowserWindow, ipcMain } = require('electron');
-const { ClientRequest } = require('http');
-const path = require('path');
 
 function createClientSocket(mainWindow) {
     // Connect to java backend
@@ -8,55 +6,56 @@ function createClientSocket(mainWindow) {
     const client = new net.Socket();
 
     client.connect(1234, 'localhost', () => {
-        log('Connected to java backend !')
-
-        client.write('Handshake from Electron!\r');
+        console.log('Connected to java server');
     })
 
     client.on('data', (data) => {
-        const response = data.toString();
-
-        mainWindow.webContents.send('java-backend-response', response);
+        const response = data.toString().trim();
+        console.log("+ Received: " + response);
+        mainWindow.webContents.send('java-backend-response', response.split(' '));
     })
 
     client.on('close', () => {
-        log('Server socket closed');
+        console.log('Java socket was closed');
     })
 
     client.on('error', (error) => {
-        log('Error in electron: ' + error);
+        console.log('Error in electron: ' + error);
     })
 
-    function log(string) {
-        mainWindow.webContents.send('log-message', string);
-    }
-
     ipcMain.on('send-to-backend', (event, message) => {
+        console.log("- Sent: " + message);
         client.write(message + '\r');
     })
 
     return client;
 }
 
-function createWindow() {
+function createWindow(isloggedIn) {
     const mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
+        resizable: false,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             //preload: path.join('C:\ElectronTest', 'renderer.js'),
         },
-        resizable: false,
     });
 
     mainWindow.loadFile('main.html');
 
     // WebContents class send handle 'did-finish-load' when html is fully loaded 
     mainWindow.webContents.on('did-finish-load', () => {
-       var client = createClientSocket(mainWindow);
-       //client.write('html finished load\r');
+
     })
+
+    return mainWindow;
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+    const mainWindow = createWindow();
+    const client = createClientSocket(mainWindow);
+    client.write('isLoggedIn\r');
+});
