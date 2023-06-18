@@ -32,6 +32,20 @@ public class Requests {
 				Electron.response("mega " + code);
 				break;
 			}
+			
+			case "firstName" : {
+				int code = Mega.run(CommandsEnum.USERATTR, "firstname");
+				String firstName = Mega.lastOutput.split(" ")[3];
+				Electron.response("firstName " + firstName);
+				break;
+			}
+			
+			case "lastName" : {
+				int code = Mega.run(CommandsEnum.USERATTR, "lastname");
+				String lastName = Mega.lastOutput.split(" ")[3];
+				Electron.response("lastName " + lastName);
+				break;
+			}
 		}
 	}
 }
