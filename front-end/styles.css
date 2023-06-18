@@ -83,13 +83,12 @@ body {
     border-radius: 8px;
     background-color: #5e5e5e;
     color: #e7e7e7;
-    padding: 3vh;
-    padding-right: 15vh;
-    padding-bottom: -0.5vh;
-    margin-left: 19vh;
     font-family: "my-font";
     font-size: 20px;
+    margin-top: 182px;
+    margin-left: 46px;
     cursor: pointer;
+    transform: rotate(90deg);
   }
   
   #loading {
@@ -98,4 +97,76 @@ body {
     padding: 0;
     color: #e0d921;
     font-family: "my-font";
+  }
+
+  #sideHeader {
+    width: 78px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 122px;
+    background-color: #e0d921;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+    
+  #sideHeader p {
+    transform: rotate(90deg);
+    position: absolute;
+    top: 27px;
+    left: 5.8px;
+    font-family: "my-font";
+    font-size: 38px;
+    color: #1c1c1c;
+  }
+
+  #icon {
+    top: 22px;
+    left: 40px;
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    z-index: 1;
+    border: 2px solid #e0d921;
+    border-radius: 2px;
+  }
+
+  #button1 {
+    top: 38%;
+    left: 130px;
+    position: absolute;
+    height: 50px;
+    width: auto;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  #button2 {
+    top: 50%;
+    left: 136px;
+    position: absolute;
+    height: 55px;
+    width: auto;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  #button3 {
+    top: 62%;
+    left: 127px;
+    position: absolute;
+    height: 48px;
+    width: auto;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  #homepage, #shop, #library {
+    font-size: 50px;
+    font-family: ("my-font");
+    top: 200px;
+    left: 400px;
+    color: white;
+    position: absolute;
   }

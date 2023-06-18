@@ -100,3 +100,21 @@ function showAnotherScreen() {
     anotherScreen.style.display = "block";
     document.getElementById("loadingScreen").style.display = "none";
 }
+
+function showHomepage() {
+    document.getElementById('shop').style.display = "none";
+    document.getElementById('library').style.display = "none";
+    document.getElementById('homepage').style.display = "block";
+}
+
+function showLibrary() {
+    document.getElementById('shop').style.display = "none";
+    document.getElementById('homepage').style.display = "none";
+    document.getElementById('library').style.display = "block";
+}
+
+function showShop() {
+    document.getElementById('library').style.display = "none";
+    document.getElementById('homepage').style.display = "none";
+    document.getElementById('shop').style.display = "block";
+}
