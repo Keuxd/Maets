@@ -6,10 +6,15 @@
         - 13 : Login Failed: Unconfirmed account. Please confirm your account
         - 54 : Already logged in. Please log out first.
     
-    + isLoggedIn
+    + isLoggedIn:
         - true  (Internal Code 0)
         - false (Internal Code 57)
     
+    + firstName:
+    + lastName:
+        - 57 : Not logged in.
+        - 0 : Name
+        
     + Logout:
         - 0 : Logout Success
     
