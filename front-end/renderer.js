@@ -20,12 +20,20 @@ ipcRenderer.on('java-backend-response', (event, response) => {
             break;
 
         case 'isLoggedIn' :
-            if(response[1] === 'true') showAnotherScreen();
+            if(response[1] === 'true') ipcRenderer.send("send-to-backend", "firstName");
             else invokeLoginCard();
             break;
-
+            
         case "mega" :
             ipcRenderer.send("send-to-backend", "isLoggedIn");
+            break;
+                
+        case "firstName" : 
+            showAnotherScreen(response[1]);
+            break;
+
+        case "lastName" : 
+
             break;
     }
 });
@@ -86,7 +94,8 @@ function invokeLoginCard() {
     document.body.appendChild(logincard);
 }
 
-function showAnotherScreen() {
+function showAnotherScreen(username) {
+    document.getElementById("sideHeader").childNodes[1].textContent = username;
     const logoutButton = document.getElementById("logoutButton");
     const anotherScreen = document.getElementById("anotherScreen");
     logoutButton.addEventListener('click', (event) => {
