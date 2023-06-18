@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Mega {
 	
+	public static String lastOutput;
+
 	public static int run(CommandsEnum command, String... arguments) {
 		try {
 			final String MEGA_DIR = System.getenv("LOCALAPPDATA") + "/MEGAcmd/";
@@ -23,7 +25,8 @@ public class Mega {
 			Thread logReader = new Thread(() -> {
 				Scanner scanner = new Scanner(process.getInputStream(), "UTF-8");
 				while(scanner.hasNextLine()) {
-					System.out.println(scanner.nextLine());
+					lastOutput = scanner.nextLine();
+					System.out.println(lastOutput);
 				}
 				scanner.close();
 			});
