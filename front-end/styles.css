@@ -162,11 +162,74 @@ body {
     cursor: pointer;
   }
 
-  #homepage, #shop, #library {
+  #shop, #library {
     font-size: 50px;
-    font-family: ("my-font");
+    font-family: "my-font";
     top: 200px;
     left: 400px;
     color: white;
     position: absolute;
+  }
+
+  #homepage {
+    font-size: 50px;
+    font-family: "my-font";
+    color: #e0d921;
+    margin-left: 135px;
+    margin-top: -70px;
+    position: absolute;
+  }
+
+  #abtus {
+    font-size: 27px;
+    font-family: "my-font";
+    text-align: center;
+    color: #ffffff;
+    margin-top: 65px;
+    position: absolute;
+  }
+
+  #container {
+    width: 500px;
+    height: 225px;
+    padding: 10px;
+    margin-left: 450px;
+    margin-top: -135px;
+    background-color: #353535;
+  }
+
+  #homepage2 {
+    font-size: 50px;
+    font-family: "my-font";
+    color: #e0d921;
+    margin-left: 105px;
+    margin-top: -70px;
+    position: absolute;
+  }
+
+  #patchVer {
+    font-size: 27px;
+    font-family: "my-font";
+    color: #e0d921;
+    margin-top: -10px;
+    position: absolute;
+  }
+
+  #patchNote {
+    font-size: 27px;
+    font-family: "my-font";
+    text-align: center;
+    color: #ffffff;
+    margin-top: 53px;
+    margin-left: 40px;
+    position: absolute;
+  }
+
+  #container2 {
+    width: 500px;
+    height: 225px;
+    padding: 10px;
+    margin-left: 450px;
+    margin-top: 105px;
+    background-color: #353535;
   }

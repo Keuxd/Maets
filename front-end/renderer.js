@@ -113,17 +113,17 @@ function showAnotherScreen(username) {
 function showHomepage() {
     document.getElementById('shop').style.display = "none";
     document.getElementById('library').style.display = "none";
-    document.getElementById('homepage').style.display = "block";
+    document.getElementById('containers').style.display = "block";
 }
 
 function showLibrary() {
     document.getElementById('shop').style.display = "none";
-    document.getElementById('homepage').style.display = "none";
+    document.getElementById('containers').style.display = "none";
     document.getElementById('library').style.display = "block";
 }
 
 function showShop() {
     document.getElementById('library').style.display = "none";
-    document.getElementById('homepage').style.display = "none";
+    document.getElementById('containers').style.display = "none";
     document.getElementById('shop').style.display = "block";
 }
