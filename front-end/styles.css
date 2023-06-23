@@ -23,6 +23,7 @@ body {
       padding: 0;
       width: 305px;
       height: 433px;
+      box-shadow: 6px 7px 12px rgba(0, 0, 0, 0.4);
   }
 
   #title {
@@ -44,7 +45,6 @@ body {
   }
 
   .attfield {
-    font-size: 24;
     font-family: "my-font";
     color: #e7e7e7;
     padding: 2vh;
@@ -58,26 +58,40 @@ body {
     border: 1px solid #5e5e5e;
     border-radius: 8px;
     background-color: #5e5e5e;
-    color: #333;
+    color: white;
     padding: 1.5vh;
     margin-left: 8vh;
     margin-bottom: 4vh;
+    transition: background-color 0.4s;
+  }
+
+  .attinput:hover {
+    filter: saturate(70%) brightness(90%);
   }
 
   .attscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-left: 8vh;
     border: 6px solid #5e5e5e;
     border-radius: 8px;
-    background-color: #5e5e5e;
     color: #e7e7e7;
-    padding: 3vh;
-    padding-right: 15vh;
-    padding-bottom: -0.5vh;
-    margin-left: 8vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-right: 6vh;
+    padding-left: 6vh;
     font-family: "my-font";
     font-size: 20px;
     cursor: pointer;
   }
-
+  
+  #loginButton {
+    background-color: #5e5e5e;
+    font-size: 32px;
+  }
+  
   #logoutButton {
     border: 6px solid #5e5e5e;
     border-radius: 8px;

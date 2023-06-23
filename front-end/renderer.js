@@ -92,6 +92,21 @@ function invokeLoginCard() {
     form.append(usernameLabel, inputEmail, passwordLabel, inputPassword, breakLine, loginButton);
     logincard.append(title, subtitle, form, divError);
     document.body.appendChild(logincard);
+
+    inputPassword.addEventListener('input', toggleLoginButtonState);
+    inputEmail.addEventListener('input', toggleLoginButtonState);
+
+    function toggleLoginButtonState() {
+        if (inputEmail.value !== '' && inputPassword.value !== '') {
+            loginButton.style.backgroundColor = '#e0d921';
+            loginButton.style.borderColor = '#e0d921';
+            loginButton.style.color = '#5a5712';
+        } else {
+            loginButton.style.backgroundColor = '#5e5e5e';
+            loginButton.style.borderColor = '#5e5e5e';
+            loginButton.style.color = 'white';
+        }
+    }
 }
 
 function showAnotherScreen(username) {
