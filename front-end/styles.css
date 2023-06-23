@@ -66,12 +66,14 @@ body {
     background-color: #5e5e5e;
     color: white;
     padding: 1.5vh;
+    outline: none;
+    outline-width: 0.5px;
     margin-left: 8vh;
     margin-bottom: 4vh;
     transition: background-color 0.4s;
   }
 
-  .attinput:hover {
+  .attscreen:hover {
     filter: saturate(70%) brightness(90%);
   }
 
