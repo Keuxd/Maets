@@ -14,7 +14,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -31,3 +30,4 @@ node_modules
 /back-end/.gitignore
 /back-end/bin/.gitignore
 /.metadata/
+/front-end/.project
