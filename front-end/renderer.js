@@ -114,18 +114,19 @@ function invokeLoginCard() {
 
 function showAnotherScreen(username) {
     document.getElementById("sideHeader").childNodes[1].textContent = username;
-    const logoutButton = document.getElementById("logoutButton");
     const anotherScreen = document.getElementById("anotherScreen");
-    logoutButton.addEventListener('click', (event) => {
-        console.log("LOGOUT CLICK");
-        ipcRenderer.send('send-to-backend', 'logout');
-        invokeLoginCard();
-        anotherScreen.style.display = "none";
-    });
 
     anotherScreen.hidden = false;
     anotherScreen.style.display = "block";
     document.getElementById("loadingScreen").style.display = "none";
+}
+
+function logout() {
+	ipcRenderer.send("send-to-backend", "logout");
+	invokeLoginCard();
+	
+	const anotherScreen = document.getElementById("anotherScreen");
+	anotherScreen.style.display = "none";
 }
 
 function showHomepage() {
