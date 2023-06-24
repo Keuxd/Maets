@@ -31,12 +31,14 @@ ipcRenderer.on('java-backend-response', (event, response) => {
             ipcRenderer.send("send-to-backend", "isLoggedIn");
             break;
                 
-        case "firstName" : 
-            showAnotherScreen(response[1]);
+        case "firstName" :
+            invokeMainScreen(response[1]);
+            invokeHomePage();
             break;
 
-        case "lastName" : 
-
+        case "logout" :
+			document.getElementById("loadingScreen").style.display = "none";
+			invokeLoginCard();
             break;
     }
 });
@@ -112,37 +114,106 @@ function invokeLoginCard() {
     }
 }
 
-function showAnotherScreen(username) {
-    document.getElementById("sideHeader").childNodes[1].textContent = username;
-    const anotherScreen = document.getElementById("anotherScreen");
+function invokeMainScreen(username) {
+	const mainScreen = document.createElement("div");
+		mainScreen.id = "mainScreen";
+	const userProfilePicture = document.createElement("img");
+		userProfilePicture.id = "icon";
+		userProfilePicture.src = "./image_contents/Nobara.jpg";
+	const homeButton = document.createElement("img");
+		homeButton.id = "button1";
+		homeButton.src = "./image_contents/home.png";
+		homeButton.onclick = invokeHomePage;
+	const shopButton = document.createElement("img");
+		shopButton.id = "button2";
+		shopButton.src = "./image_contents/shop.png";
+		shopButton.onclick = invokeShop;
+	const libraryButton = document.createElement("img");
+		libraryButton.id = "button3";
+		libraryButton.src = "./image_contents/library.png";
+		libraryButton.onclick = invokeLibrary;
+	const userNameSideHeader = document.createElement("div");
+		userNameSideHeader.id = "sideHeader";
+		const name = document.createElement("p");
+			name.textContent = username;
+		userNameSideHeader.appendChild(name);
+		
+	const logoutButton = document.createElement("button");
+		logoutButton.id = "logoutButton";
+		logoutButton.onclick = logout;
+		logoutButton.textContent = "Logout";
+		
+	const containers = document.createElement("div");
+		containers.id = "containers";
 
-    anotherScreen.hidden = false;
-    anotherScreen.style.display = "block";
-    document.getElementById("loadingScreen").style.display = "none";
+ 	document.getElementById("loadingScreen").style.display = "none";
+	mainScreen.append(userProfilePicture, homeButton, shopButton, libraryButton, userNameSideHeader, logoutButton, containers);
+	document.body.appendChild(mainScreen);
+}
+
+function invokeHomePage() {
+	clearContainers();
+	
+	const containers = document.getElementById("containers");
+	const container1 = document.createElement("div");
+		container1.id = "container";
+		const homepage1 = document.createElement("div");
+			homepage1.id = "homepage";
+			homepage1.textContent = "About Us";
+		const abtus = document.createElement("p");
+			abtus.id = "abtus";
+			abtus.innerHTML = "Welcome to <span style = \"color: #e0d921\">Maets</span> ! That's our way to <br> give you easy acess to games in <br> a free way!";
+	const container2 = document.createElement("div");
+		container2.id = "container2";
+		const homepage2 = document.createElement("div");
+			homepage2.id = "homepage2";
+			homepage2.textContent = "Patch Notes";
+		const patchVer = document.createElement("p");
+			patchVer.id = "patchVer";
+			patchVer.textContent = "Update 01";
+		const patchNote = document.createElement("p");
+			patchNote.id = "patchNote";
+			patchNote.innerHTML = "Added a Home Screen, with <br> some visual elements, with the <br> principal idea of this <br> software."
+			
+	container1.append(homepage1, abtus);
+	container2.append(homepage2, patchVer, patchNote);
+	
+	containers.append(container1, container2);
+}
+
+function invokeShop() {
+	clearContainers();
+	ipcRenderer.send("send-to-backend", "shop");
+		
+	const containers = document.getElementById("containers");
+	const sample = document.createElement("p");
+		sample.id = "shop";
+		sample.innerHTML = "SHOP GOES BRRRRRRR";
+		
+	
+	containers.append(sample);
+}
+
+function invokeLibrary() {
+	clearContainers();
+	
+	const containers = document.getElementById("containers");
+	const sample = document.createElement("p");
+		sample.id = "library";
+		sample.innerHTML = "LIBRARY GONE BRRRRRRRRRRR";
+	
+	containers.append(sample);
 }
 
 function logout() {
 	ipcRenderer.send("send-to-backend", "logout");
-	invokeLoginCard();
-	
-	const anotherScreen = document.getElementById("anotherScreen");
-	anotherScreen.style.display = "none";
+	document.getElementById("mainScreen").remove();
+	document.getElementById("loadingScreen").style.display = "block";
 }
 
-function showHomepage() {
-    document.getElementById('shop').style.display = "none";
-    document.getElementById('library').style.display = "none";
-    document.getElementById('containers').style.display = "block";
-}
-
-function showLibrary() {
-    document.getElementById('shop').style.display = "none";
-    document.getElementById('containers').style.display = "none";
-    document.getElementById('library').style.display = "block";
-}
-
-function showShop() {
-    document.getElementById('library').style.display = "none";
-    document.getElementById('containers').style.display = "none";
-    document.getElementById('shop').style.display = "block";
+function clearContainers() {
+	const containers = document.getElementById("containers");
+	while(containers.firstChild) {
+		containers.removeChild(containers.firstChild);
+	}
 }
