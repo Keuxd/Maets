@@ -31,7 +31,7 @@ function createClientSocket(mainWindow) {
     return client;
 }
 
-function createWindow(isloggedIn) {
+function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
@@ -57,5 +57,26 @@ function createWindow(isloggedIn) {
 app.whenReady().then(() => {
     const mainWindow = createWindow();
     const client = createClientSocket(mainWindow);
+    
+    client.on('data', (data) => {
+        const response = data.toString().trim();
+        console.log("+ Received: " + response);
+        
+        if(isJson(response)) {
+			mainWindow.webContents.send("java-backend-json", JSON.parse(response));
+		} else {
+        	mainWindow.webContents.send('java-backend-response', response.split(' '));
+		}
+    })
+    
     client.write("mega\r");
 });
+
+function isJson(string) {
+	try {
+		JSON.parse(string);
+	} catch(exception) {
+		return false;
+	}
+	return true;
+}

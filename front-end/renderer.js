@@ -1,6 +1,10 @@
 const { ipcRenderer } = require('electron');
 const { LoginResponseHandler, isValidEmail } = require('./auth');
-  
+ 
+ipcRenderer.on("java-backend-json", (event, response) => {
+	
+});
+
 ipcRenderer.on('java-backend-response', (event, response) => {
     switch(response[0]) {
         case 'login' :
