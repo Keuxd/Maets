@@ -29,6 +29,6 @@ replay_pid*
 node_modules
 /back-end/.gitignore
 /back-end/bin/.gitignore
-/back-end/.classpath
+.classpath
+.project
 /.metadata/
-/front-end/.project
