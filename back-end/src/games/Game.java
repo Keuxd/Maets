@@ -3,7 +3,7 @@ package games;
 public class Game {
 	
 	public enum GAMES {
-		MINECRAFT, VAMPIRE_SURVIVORS, RESIDENT_EVIL_4
+		STARDEW_VALLEY, VAMPIRE_SURVIVORS, BLOONS_TD6
 	}
 		
 	protected int id;
@@ -12,22 +12,22 @@ public class Game {
 	
 	public Game(GAMES game) {
 		switch(game) {
-			case MINECRAFT:
-				minecraft();
-				break;
-			case RESIDENT_EVIL_4:
-				residentEvil4();
+			case STARDEW_VALLEY:
+				stardewValley();
 				break;
 			case VAMPIRE_SURVIVORS:
 				vampireSurvivors();
 				break;
+			case BLOONS_TD6:
+				bloonsTd6();
+				break;
 		}
 	}
 	
-	private void minecraft() {
+	private void stardewValley() {
 		this.id = 1;
-		this.name = "Minecraft";
-		this.description = "Jogo quadrado de sobrevivência.";
+		this.name = "Stardew Valley";
+		this.description = "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?";
 	}
 	
 	private void vampireSurvivors() {
@@ -35,11 +35,22 @@ public class Game {
 		this.name = "Vampire Survivors";
 		this.description = "Sobrevive ai pae";
 	}
-	
-	private void residentEvil4() {
+
+	private void bloonsTd6() {
 		this.id = 3;
-		this.name = "Resident Evil 4";
-		this.description = "Resgata a chata da Ashley aí";
+		this.name = "Bloons TD6";
+		this.description = "Mamacos";
+	}
+	
+	public static Game[] getAllGames() {
+		GAMES[] gamesEnum = GAMES.values();
+		Game[] gamesArray = new Game[gamesEnum.length];
+		
+		for(int i = 0; i < gamesEnum.length; i++) {
+			gamesArray[i] = new Game(gamesEnum[i]);
+		}
+		
+		return gamesArray;
 	}
 	
 }
