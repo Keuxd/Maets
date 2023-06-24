@@ -1,6 +1,8 @@
 package core;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 
 import games.Game;
 import mega.CommandsEnum;
@@ -51,8 +53,10 @@ public class Requests {
 			}
 			
 			case "shop" : {
-				String allGames = new Gson().toJson(Game.getAllGames()).toString();
-				Electron.response(allGames);
+				JsonArray gamesArray = new JsonArray();
+				gamesArray.add("Shop");
+				gamesArray.addAll(JsonParser.parseString(new Gson().toJson(Game.getAllGames())).getAsJsonArray());
+				Electron.response(gamesArray.toString());
 				break;
 			}
 		}

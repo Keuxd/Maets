@@ -2,7 +2,14 @@ const { ipcRenderer } = require('electron');
 const { LoginResponseHandler, isValidEmail } = require('./auth');
  
 ipcRenderer.on("java-backend-json", (event, response) => {
-	document.getElementById("shop").innerHTML += "<span style = \"color: #e0d921\">" + JSON.stringify(response[0]) + "</span>";
+	switch(response[0]) {
+		case "Shop" :
+			document.getElementById("shop").innerHTML += "<span style = \"color: #e0d921\">" + JSON.stringify(response) + "</span>";
+			break;
+		case "Library":
+			console.log("Lib Json Received ?");
+			break;
+	}
 });
 
 ipcRenderer.on('java-backend-response', (event, response) => {
