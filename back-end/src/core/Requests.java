@@ -1,5 +1,8 @@
 package core;
 
+import com.google.gson.Gson;
+
+import games.Game;
 import mega.CommandsEnum;
 import mega.Mega;
 
@@ -44,6 +47,12 @@ public class Requests {
 				int code = Mega.run(CommandsEnum.USERATTR, "lastname");
 				String lastName = Mega.lastOutput.split(" ")[3];
 				Electron.response("lastName " + lastName);
+				break;
+			}
+			
+			case "shop" : {
+				String allGames = new Gson().toJson(Game.getAllGames()).toString();
+				Electron.response(allGames);
 				break;
 			}
 		}
