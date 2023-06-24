@@ -10,9 +10,8 @@ ipcRenderer.on('java-backend-response', (event, response) => {
         case 'login' :
             switch(response[1]){
                 case "0" :
-                    document.getElementById("loadingScreen").style.display = "none";
-                    document.getElementById("anotherScreen").style.display = "block";
                     document.getElementById("logincard").remove();
+                    ipcRenderer.send("send-to-backend", "firstName");
                     break;
                 default :
                     document.getElementById("error").textContent = LoginResponseHandler.responseMessages[response[1]].message;

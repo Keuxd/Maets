@@ -1,18 +1,12 @@
 const { app , BrowserWindow, ipcMain } = require('electron');
 
-function createClientSocket(mainWindow) {
+function createClientSocket() {
     // Connect to java backend
     const net = require('net');
     const client = new net.Socket();
 
     client.connect(1234, 'localhost', () => {
         console.log('Connected to java server');
-    })
-
-    client.on('data', (data) => {
-        const response = data.toString().trim();
-        console.log("+ Received: " + response);
-        mainWindow.webContents.send('java-backend-response', response.split(' '));
     })
 
     client.on('close', () => {
@@ -55,8 +49,8 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+    const client = createClientSocket();
     const mainWindow = createWindow();
-    const client = createClientSocket(mainWindow);
     
     client.on('data', (data) => {
         const response = data.toString().trim();
