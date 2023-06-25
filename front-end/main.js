@@ -56,8 +56,9 @@ app.whenReady().then(() => {
         const response = data.toString().trim();
         console.log("+ Received: " + response);
         
-        if(isJson(response)) {
-			mainWindow.webContents.send("java-backend-json", JSON.parse(response));
+        const availableJson = isJson(response);
+        if(availableJson[0]) {
+			mainWindow.webContents.send("java-backend-json", availableJson[1]);
 		} else {
         	mainWindow.webContents.send('java-backend-response', response.split(' '));
 		}
@@ -68,9 +69,8 @@ app.whenReady().then(() => {
 
 function isJson(string) {
 	try {
-		JSON.parse(string);
+		return [true, JSON.parse(string)];
 	} catch(exception) {
-		return false;
+		return [false, null];
 	}
-	return true;
 }
