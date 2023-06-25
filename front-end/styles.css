@@ -16,6 +16,7 @@ body {
   }
 
   #logincard {
+      position: relative;
       display: inline;
       justify-content: center;
       background-color: #363636;
@@ -24,6 +25,7 @@ body {
       width: 305px;
       height: 433px;
       box-shadow: 6px 7px 12px rgba(0, 0, 0, 0.4);
+      z-index: 1;
   }
 
   #title {
@@ -119,12 +121,113 @@ body {
     transform: rotate(90deg);
   }
   
-  #loading {
-    font-size: 50px;
+  #loadingScreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     text-align: center;
     padding: 0;
-    color: #e0d921;
+    margin: 0;
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+    background-color: #353535;
+    backdrop-filter: blur(20px);
+    z-index: 2;
+  }
+
+  #loadtext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 60px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 18px;
+    text-align: center;
+    color: #fff837;
     font-family: "my-font";
+    animation: text-color 6s ease-in-out infinite;
+  }
+
+  @keyframes text-color {
+    100%,
+    0% {
+      stroke: #fffa7a;
+    }
+    20% {
+      stroke: #e0d921;
+    }
+    40% {
+      stroke: #fff9b3
+    }
+    80% {
+      stroke: #fff36a
+    }
+    100% {
+      stroke: #fff70b;
+    }
+  }
+
+  .circular {
+    animation: rotate 2s linear infinite;
+    height: 100px;
+    transform-origin: center center;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 0;
+    display: block;
+  }
+  
+  .path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+    }
+    100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -124px;
+    }
+  }
+  
+  @keyframes color {
+    100%,
+    0% {
+      stroke: #fffa7a;
+    }
+    20% {
+      stroke: #e0d921;
+    }
+    40% {
+      stroke: #fff9b3
+    }
+    80% {
+      stroke: #fff36a
+    }
+    100% {
+      stroke: #fff70b;
+    }
   }
 
   #sideHeader {

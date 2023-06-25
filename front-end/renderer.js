@@ -91,7 +91,6 @@ function invokeLoginCard() {
         event.preventDefault();
         
         if (form.checkValidity() && isValidEmail(inputEmail.value)) {
-          logincard.style.display = 'none';
           document.getElementById('loadingScreen').style.display = "block";
     
           ipcRenderer.send('send-to-backend', `login ${inputEmail.value} ${inputPassword.value}`);
