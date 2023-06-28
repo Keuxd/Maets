@@ -240,6 +240,7 @@ body {
     align-items: center;
     display: flex;
     justify-content: center;
+    z-index: 2;
   }
     
   #sideHeader p {
@@ -258,7 +259,7 @@ body {
     position: absolute;
     height: 120px;
     width: 120px;
-    z-index: 1;
+    z-index: 3;
     border: 2px solid #e0d921;
     border-radius: 2px;
   }
@@ -269,7 +270,7 @@ body {
     position: absolute;
     height: 50px;
     width: auto;
-    z-index: 1;
+    z-index: 3;
     cursor: pointer;
   }
 
@@ -279,7 +280,7 @@ body {
     position: absolute;
     height: 55px;
     width: auto;
-    z-index: 1;
+    z-index: 3;
     cursor: pointer;
   }
 
@@ -289,7 +290,7 @@ body {
     position: absolute;
     height: 48px;
     width: auto;
-    z-index: 1;
+    z-index: 3;
     cursor: pointer;
   }
 
@@ -363,4 +364,42 @@ body {
     margin-left: 450px;
     margin-top: 105px;
     background-color: #353535;
+  }
+
+  #shop {
+    display: flex;
+    position: absolute;
+    background-color: #353535;
+    width: 87%;
+    height: 720px;
+    margin-left: 13%;
+    margin-right: auto;
+    padding: 0;
+    border: 0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .shopDivs, .shopTitles {
+    position: relative;
+    justify-content: center;
+    font-size: 22px;
+    font-family: "my-font";
+    color: #e0d921;
+    z-index: 4;
+    margin-left: 220px;
+  }
+
+  .shopTitles {
+    margin-left: 0px;
+  }
+
+  .shopDescs {
+    text-align: justify;
+    text-overflow: ellipsis;
+    width: 370px; 
+    font-size: 18px;
+    margin-left: 10px;
+    color: white;
   }
