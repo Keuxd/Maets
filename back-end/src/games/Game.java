@@ -6,9 +6,9 @@ public class Game {
 		STARDEW_VALLEY, VAMPIRE_SURVIVORS, BLOONS_TD6, MINECRAFT, HADES, GRAND_THEFT_AUTO_5
 	}
 		
-	protected int id;
-	protected String name;
-	protected String description;
+	private int id;
+	private String name;
+	private String description;
 	
 	public Game(Games game) {
 		switch(game) {
