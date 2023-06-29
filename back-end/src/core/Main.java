@@ -7,6 +7,7 @@ import config.OnlineConfigs;
 
 public class Main {
 	
+	public static final String MAETS_FOLDER_PATH = System.getenv("LOCALAPPDATA") + "/Maets/";
 	
 	public static void main(String[] args) throws IOException {
 		Electron.initTCPConnection();
