@@ -2,15 +2,15 @@ package games;
 
 public class Game {
 	
-	public enum GAMES {
 		STARDEW_VALLEY, VAMPIRE_SURVIVORS, BLOONS_TD6
+	public enum Games {
 	}
 		
 	protected int id;
 	protected String name;
 	protected String description;
 	
-	public Game(GAMES game) {
+	public Game(Games game) {
 		switch(game) {
 			case STARDEW_VALLEY:
 				stardewValley();
@@ -43,7 +43,7 @@ public class Game {
 	}
 	
 	public static Game[] getAllGames() {
-		GAMES[] gamesEnum = GAMES.values();
+		Games[] gamesEnum = Games.values();
 		Game[] gamesArray = new Game[gamesEnum.length];
 		
 		for(int i = 0; i < gamesEnum.length; i++) {
