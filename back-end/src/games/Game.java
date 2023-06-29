@@ -92,4 +92,15 @@ public class Game {
 		return gamesArray;
 	}
 	
+	public static Game getGameFromId(int id) {
+		Game[] games = getAllGames();
+	
+		for(int i = 0; i < games.length; i++) {
+			if(games[i].id == id) {
+				return games[i];
+			}
+		}
+		
+		return null;
+	}
 }
