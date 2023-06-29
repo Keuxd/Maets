@@ -1,9 +1,14 @@
 package core;
 
+import java.io.IOException;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import config.LocalConfigs;
+import config.OnlineConfigs;
 import games.Game;
 import mega.CommandsEnum;
 import mega.Mega;
@@ -53,10 +58,21 @@ public class Requests {
 			}
 			
 			case "shop" : {
-				JsonArray gamesArray = new JsonArray();
-				gamesArray.add("Shop");
-				gamesArray.addAll(JsonParser.parseString(new Gson().toJson(Game.getAllGames())).getAsJsonArray());
-				Electron.response(gamesArray.toString());
+				JsonObject json = new JsonObject();
+				try {
+					json.addProperty("type", "Shop");
+					JsonArray games = JsonParser.parseString(new Gson().toJson(Game.getAllGames())).getAsJsonArray();
+					games = OnlineConfigs.addIsInLibraryToGamesJsonArray(games);
+
+					json.add("games", games);
+				} catch(IOException e) {
+					e.printStackTrace();
+					json.addProperty("type", "Error");
+				}
+				
+				Electron.response(json.toString());
+				break;
+			}
 				break;
 			}
 		}
