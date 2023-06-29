@@ -8,7 +8,6 @@ ipcRenderer.on("java-backend-json", (event, response) => {
 			break;
 			
         case "Shop":
-            // document.getElementById("shop").innerHTML += "<span style = \"color: #e0d921\">" + JSON.stringify(response[1].id) + "</span>";
             const containerShop = document.createElement("div");
             containerShop.id = "containerShop";
             const containers = document.getElementById("containers");
