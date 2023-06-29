@@ -15,6 +15,11 @@
         - 57 : Not logged in.
         - 0 : Name
         
+    + addToLibrary: 
+    	- 0 : Add Success
+        - 2 : Game ID doesn't exist || Config file error
+        - 9 : Invalid game id format(An integer is expected)
+   
     + Logout:
         - 0 : Logout Success
     
@@ -26,5 +31,6 @@
 
 /* Communication 
     - Login : "login email password"
+    - Add game to library: "addToLibrary gameId"
 
 */// PS: All arguments should split using spaces
