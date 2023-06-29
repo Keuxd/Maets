@@ -2,8 +2,8 @@ package games;
 
 public class Game {
 	
-		STARDEW_VALLEY, VAMPIRE_SURVIVORS, BLOONS_TD6
 	public enum Games {
+		STARDEW_VALLEY, VAMPIRE_SURVIVORS, BLOONS_TD6, MINECRAFT, HADES, GRAND_THEFT_AUTO_5
 	}
 		
 	protected int id;
@@ -20,6 +20,15 @@ public class Game {
 				break;
 			case BLOONS_TD6:
 				bloonsTd6();
+				break;
+			case GRAND_THEFT_AUTO_5:
+				grandTheftAuto5();
+				break;
+			case HADES:
+				hades();
+				break;
+			case MINECRAFT:
+				minecraft();
 				break;
 		}
 	}
@@ -40,6 +49,36 @@ public class Game {
 		this.id = 3;
 		this.name = "Bloons TD6";
 		this.description = "Mamacos";
+	}
+	
+	private void minecraft() {
+		this.id = 4;
+		this.name = "Minecraft";
+		this.description = "Jogo quadrado goes brrrrrrrr";
+	}
+	
+	private void hades() {
+		this.id = 5;
+		this.name = "Hades";
+		this.description = "Tenho que zerar ainda";
+	}
+	
+	private void grandTheftAuto5() {
+		this.id = 6;
+		this.name = "Grand Theft Auto 5";
+		this.description = "GTA";
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getDescription() {
+		return this.description;
 	}
 	
 	public static Game[] getAllGames() {
