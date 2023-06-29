@@ -49,6 +49,9 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+
+	console.log(process.argv[2]);
+
     const client = createClientSocket();
     const mainWindow = createWindow();
     
