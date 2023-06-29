@@ -2,15 +2,18 @@ const { ipcRenderer } = require('electron');
 const { LoginResponseHandler, isValidEmail } = require('./auth');
 
 ipcRenderer.on("java-backend-json", (event, response) => {
-    switch (response[0]) {
+    switch (response.type) {
+		case "Error" :
+			// Mostra uma mensagem de erro e fecha o programa
+			break;
+			
         case "Shop":
             // document.getElementById("shop").innerHTML += "<span style = \"color: #e0d921\">" + JSON.stringify(response[1].id) + "</span>";
             const containerShop = document.createElement("div");
             containerShop.id = "containerShop";
             const containers = document.getElementById("containers");
-            const filteredResponse = response.filter(value => value != "Shop");
 
-            filteredResponse.forEach(game => {
+            response.games.forEach(game => {				
                 const divShop = document.createElement("div");
                 divShop.className = "shopDivs"
 
