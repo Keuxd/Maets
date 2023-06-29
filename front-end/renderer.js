@@ -32,6 +32,7 @@ ipcRenderer.on("java-backend-json", (event, response) => {
             containers.append(containerShop);
             console.log("Shop Json Received ?");
             break;
+            
         case "Library":
             console.log("Lib Json Received ?");
             break;
