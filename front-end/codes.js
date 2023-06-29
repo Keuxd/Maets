@@ -30,6 +30,12 @@
     + Quit:
         - 0 : Quit Success
         
+    # Game State:
+    	- 0 : Not downloaded yet, can be downloaded
+		- 1 : Downloaded, can be installed
+		- 2 : Installed, ready to play
+		- 9 : Error during download || Error during installation
+        
 */// PS: All responses use this model: 'command response_code'
 //// Example: 'login 54'
 
