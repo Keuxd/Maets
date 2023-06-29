@@ -1,4 +1,8 @@
 /* Codes reference
+	+ Mega:
+		-  0   : Server start success
+		- (-2) : Server start "success"
+		
     + Login:
         - 0  : Login Success
         - 2  : Failed to Login: Invalid argument
