@@ -15,7 +15,7 @@ ipcRenderer.on("java-backend-json", (event, response) => {
             response.games.forEach(game => {				
                 const divShop = document.createElement("div");
                 divShop.className = "shopDivs"
-
+	
                 const gameTitle = document.createElement("h2");
                 gameTitle.className = "shopTitles";
                 gameTitle.innerText = game.name;
@@ -62,7 +62,14 @@ ipcRenderer.on('java-backend-response', (event, response) => {
             break;
 
         case "mega":
-            ipcRenderer.send("send-to-backend", "isLoggedIn");
+			switch(response[1]) {
+				case "-1":
+					console.log("Error during mega load//Not Installed");
+					break;
+				default:
+            		ipcRenderer.send("send-to-backend", "isLoggedIn");
+					break;
+			}
             break;
 
         case "firstName":
