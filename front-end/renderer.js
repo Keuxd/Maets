@@ -64,7 +64,10 @@ ipcRenderer.on('java-backend-response', (event, response) => {
         case "mega":
 			switch(response[1]) {
 				case "-1":
-					console.log("Error during mega load//Not Installed");
+					ipcRenderer.send("fatal-error", "unexpected");
+					break;
+				case "2":
+					ipcRenderer.send("fatal-error", "megacmd-not-installed");
 					break;
 				default:
             		ipcRenderer.send("send-to-backend", "isLoggedIn");
