@@ -1,5 +1,6 @@
 package mega;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -46,5 +47,9 @@ public class Mega {
 			e.printStackTrace();
 			return -1;
 		}
+	}
+
+	public static boolean isInstalled() {
+		return new File(MEGA_DIR + "uninst.exe").exists();
 	}
 }
