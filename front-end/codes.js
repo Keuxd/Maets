@@ -1,6 +1,8 @@
 /* Codes reference
 	+ Mega:
+		-  2   : MegaCmd not installed
 		-  0   : Server start success
+		- (-1) : Unexpected Error
 		- (-2) : Server start "success"
 		
     + Login:
