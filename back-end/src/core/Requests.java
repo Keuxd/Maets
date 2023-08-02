@@ -7,7 +7,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import config.LocalConfigs;
 import config.OnlineConfigs;
 import games.Game;
 import mega.CommandsEnum;
@@ -38,7 +37,12 @@ public class Requests {
 			}
 			
 			case "mega" : {
-				int code = Mega.run(CommandsEnum.VERSION);
+				int code;
+				if(Mega.isInstalled()) {
+					code = Mega.run(CommandsEnum.VERSION);
+				} else {
+					code = 2;
+				}
 				Electron.response("mega " + code);
 				break;
 			}
