@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class Mega {
 	
+	final private static String MEGA_DIR = System.getenv("LOCALAPPDATA") + "/MEGAcmd/";
+	
 	public static String lastOutput;
 
 	public static int run(CommandsEnum command, String... arguments) {
 		try {
-			final String MEGA_DIR = System.getenv("LOCALAPPDATA") + "/MEGAcmd/";
 			ProcessBuilder pb = new ProcessBuilder(MEGA_DIR + "mega-" + command.name() + ".bat");
 			
 			for(String argument : arguments) {
