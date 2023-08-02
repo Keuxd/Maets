@@ -1,4 +1,4 @@
-const { app , BrowserWindow, ipcMain } = require('electron');
+const { app , BrowserWindow, ipcMain, dialog } = require('electron');
 
 function createClientSocket() {
     // Connect to java backend
@@ -66,6 +66,21 @@ app.whenReady().then(() => {
         	mainWindow.webContents.send('java-backend-response', response.split(' '));
 		}
     })
+    
+    ipcMain.on("fatal-error", (data, message) => {
+		switch(message) {
+			case("megacmd-not-installed"):
+				BrowserWindow.getFocusedWindow().hide();
+				dialog.showErrorBox("MegaCMD not Installed", "Please install MegaCMD in it's default path.");
+				break;
+			case("unexpected"):
+				BrowserWindow.getFocusedWindow().hide();
+				dialog.showErrorBox("MegaCMD error", "An unexpected error ocurred.");
+				break;
+		}
+		
+		app.quit();
+	})
     
     client.write("mega\r");
 });
