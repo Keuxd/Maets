@@ -10,7 +10,6 @@ function createClientSocket() {
     })
 
     client.on('close', () => {
-        console.log('Java socket was closed');
     })
 
     client.on('error', (error) => {
