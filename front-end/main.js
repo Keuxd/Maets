@@ -12,6 +12,7 @@ function createClientSocket() {
     })
 
     client.on('close', () => {
+        fatalErrorPopup("Server Error", "Server was closed, closing application..");
     })
 
     client.on('error', (error) => {
@@ -80,12 +81,10 @@ app.whenReady().then(() => {
     ipcMain.on("fatal-error", (data, message) => {
 		switch(message) {
 			case("megacmd-not-installed"):
-				BrowserWindow.getFocusedWindow().hide();
-				dialog.showErrorBox("MegaCMD not Installed", "Please install MegaCMD in it's default path.");
+				fatalErrorPopup("MegaCMD not Installed", "Please install MegaCMD in it's default path.");
 				break;
 			case("unexpected"):
-				BrowserWindow.getFocusedWindow().hide();
-				dialog.showErrorBox("MegaCMD error", "An unexpected error ocurred.");
+				fatalErrorPopup("MegaCMD error", "An unexpected error ocurred.")
 				break;
 		}
 		
@@ -94,6 +93,12 @@ app.whenReady().then(() => {
     
     client.write("mega\r");
 });
+
+function fatalErrorPopup(title, content) {
+	mainWindow.hide();
+	dialog.showErrorBox(title, content);
+	app.quit();
+}
 
 function isJson(string) {
 	try {
