@@ -19,19 +19,28 @@ public class Electron {
 	private static ServerSocket serverSocket;
 	private static Socket clientSocket;
 	
-	public static void initTCPConnection() {
+	public static void init() {
 		if(serverSocket != null) {
-			System.out.println("TCP connection called with server socket connected, ignoring call...");
+			System.out.println("TCP connection called with server socket connected, program probably running, ignoring call...");
 			return;
 		}
 		
 		try {
 			serverSocket = new ServerSocket(PORT_NUMBER);
+			System.out.println("Running Electron..");
 			System.out.println("Listening to port: " + PORT_NUMBER);
+			runExe();
 			
 			clientSocket = serverSocket.accept();
 			System.out.println("Connected to: " + clientSocket.getInetAddress());
 			
+			initTCPThread();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void initTCPThread() {
 			Thread electronListener = new Thread(() -> {
 				try {
 					while(true) {
@@ -51,16 +60,12 @@ public class Electron {
 					e.printStackTrace();
 				} finally {
 					resetConnection();
-//					initTCPConnection();
 				}
 			});
 			
 			electronListener.setName("Electron Listener");
 			electronListener.start();
 			System.out.println("Start listening to: " + clientSocket.getInetAddress() + "\n");
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	private static void resetConnection() {
