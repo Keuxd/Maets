@@ -1,11 +1,13 @@
 package core;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URISyntaxException;
 
 import mega.CommandsEnum;
 import mega.Mega;
@@ -71,6 +73,12 @@ public class Electron {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private static void runExe() throws URISyntaxException, IOException {
+		String maetsFolder = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getPath();
+
+		Process process = new ProcessBuilder(maetsFolder + "\\fe.exe", "java").start();
 	}
 	
 	public static void response(String message) {
