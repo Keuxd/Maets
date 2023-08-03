@@ -1,5 +1,7 @@
 const { app , BrowserWindow, ipcMain, dialog } = require('electron');
 
+let mainWindow;
+
 function createClientSocket() {
     // Connect to java backend
     const net = require('net');
@@ -25,7 +27,7 @@ function createClientSocket() {
 }
 
 function createWindow() {
-    const mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1280,
         height: 720,
         resizable: false,
@@ -43,8 +45,6 @@ function createWindow() {
     mainWindow.webContents.on('did-finish-load', () => {
 
     })
-
-    return mainWindow;
 }
 
 app.whenReady().then(() => {
@@ -52,7 +52,7 @@ app.whenReady().then(() => {
 	console.log(process.argv[2]);
 
     const client = createClientSocket();
-    const mainWindow = createWindow();
+    createWindow();
     
     client.on('data', (data) => {
         const response = data.toString().trim();
