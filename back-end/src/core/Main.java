@@ -10,7 +10,7 @@ public class Main {
 	public static final String MAETS_FOLDER_PATH = System.getenv("LOCALAPPDATA") + "/Maets/";
 	
 	public static void main(String[] args) throws IOException {
-		Electron.initTCPConnection();
+		Electron.init();
 		
 		OnlineConfigs.initialize(MAETS_FOLDER_PATH);
 		LocalConfigs.initialize(MAETS_FOLDER_PATH);
