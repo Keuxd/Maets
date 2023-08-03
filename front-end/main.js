@@ -48,8 +48,19 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-
-	console.log(process.argv[2]);
+	
+	let isJava = false;
+	for(let i = 0; i < process.argv.length; i++) {
+		console.log("Argument[" + i + "] === " + process.argv[i]);
+		if(process.argv[i] === "java") {
+			isJava = true;
+		}
+	}
+	
+	if(!isJava) {
+		fatalErrorPopup("Executable error", "Please open using Maets.bat");
+		return;
+	}
 
     const client = createClientSocket();
     createWindow();
