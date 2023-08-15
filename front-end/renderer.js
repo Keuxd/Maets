@@ -4,7 +4,7 @@ const { LoginResponseHandler, isValidEmail } = require('./auth');
 ipcRenderer.on("java-backend-json", (event, response) => {
     switch (response.type) {
 		case "Error" :
-			// Mostra uma mensagem de erro e fecha o programa
+			ipcRenderer.send("fatal-error", "unexpected");
 			break;
 			
         case "Shop":
