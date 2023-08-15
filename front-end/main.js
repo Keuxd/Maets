@@ -87,8 +87,6 @@ app.whenReady().then(() => {
 				fatalErrorPopup("MegaCMD error", "An unexpected error ocurred.")
 				break;
 		}
-		
-		app.quit();
 	})
     
     client.write("mega\r");
