@@ -420,3 +420,48 @@ body {
     margin-left: 10px;
     color: white;
   }
+  
+  .product-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+	position: relative;
+  	right: -235px;
+  	width: 1020px;
+  	height: 100%;
+  }
+
+  .product-list li {
+    margin: 10px;
+	width: 315px;
+	height: 100%;
+  }
+
+  .product-list a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+	cursor: pointer;
+  }
+
+  .product-list img {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .product-name {
+    display: block;
+    font-weight: bold;
+    font-family: "my-font";
+  }
+  
+  .product-list a:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
