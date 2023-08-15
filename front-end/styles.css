@@ -115,10 +115,25 @@ body {
     color: #e7e7e7;
     font-family: "my-font";
     font-size: 20px;
-    margin-top: 182px;
-    margin-left: 46px;
+    bottom: -183px;
+    right: -46px;
     cursor: pointer;
     transform: rotate(90deg);
+    position: relative;
+  }
+  
+  #exitButton {
+	border: 6px solid #5e5e5e;
+	border-radius: 8px;
+	background-color: #5e5e5e;
+	color: #e7e7e7;
+	font-family: "my-font";
+	font-size: 20px;
+	position: relative;
+	bottom: -271px;
+	right: 36px;
+	cursor: pointer;
+	transform: rotate(90deg); 
   }
   
   #loadingScreen {
@@ -324,9 +339,20 @@ body {
   #container {
     width: 500px;
     height: 225px;
+    position: relative;
     padding: 10px;
-    margin-left: 450px;
-    margin-top: -135px;
+    right: -450px;
+    bottom: -50px;
+    background-color: #353535;
+  }
+  
+  #container2 {
+    width: 500px;
+    height: 225px;
+    position: relative;
+    padding: 10px;
+    right: -450px;
+    bottom: -110px;
     background-color: #353535;
   }
 
@@ -355,15 +381,6 @@ body {
     margin-top: 53px;
     margin-left: 40px;
     position: absolute;
-  }
-
-  #container2 {
-    width: 500px;
-    height: 225px;
-    padding: 10px;
-    margin-left: 450px;
-    margin-top: 105px;
-    background-color: #353535;
   }
 
   #shop {
