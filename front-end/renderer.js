@@ -184,12 +184,17 @@ function invokeMainScreen(username) {
     logoutButton.id = "logoutButton";
     logoutButton.onclick = logout;
     logoutButton.textContent = "Logout";
-
+    
+    const exitButton = document.createElement("button");
+    exitButton.id = "exitButton";
+    exitButton.onclick = exit;
+	exitButton.textContent = "Exit";
+	
     const containers = document.createElement("div");
     containers.id = "containers";
 
     document.getElementById("loadingScreen").style.display = "none";
-    mainScreen.append(userProfilePicture, homeButton, shopButton, libraryButton, userNameSideHeader, logoutButton, containers);
+    mainScreen.append(userProfilePicture, homeButton, shopButton, libraryButton, userNameSideHeader, logoutButton, exitButton, containers);
     document.body.appendChild(mainScreen);
 }
 
