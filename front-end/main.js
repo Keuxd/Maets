@@ -29,8 +29,8 @@ function createClientSocket() {
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 720,
+        width: 1280, // 800 1280 1920
+        height: 720, // 600  720 1080
         resizable: false,
         frame: false,
         webPreferences: {
