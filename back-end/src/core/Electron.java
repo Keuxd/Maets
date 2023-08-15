@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URISyntaxException;
+import java.util.Scanner;
 
 import mega.CommandsEnum;
 import mega.Mega;
@@ -84,6 +85,19 @@ public class Electron {
 		String maetsFolder = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getPath();
 
 		Process process = new ProcessBuilder(maetsFolder + "\\fe.exe", "java").start();
+		
+		Thread logReader = new Thread(() -> {
+			Scanner scanner = new Scanner(process.getInputStream(), "UTF-8");
+			while(scanner.hasNextLine()) {
+				String lastOutput;
+				lastOutput = scanner.nextLine();
+				System.out.println("Electron Console: " + lastOutput);
+			}
+			scanner.close();
+		});
+		
+		logReader.setName("ElectronPrompt listener");
+		logReader.start();
 	}
 	
 	public static void response(String message) {
