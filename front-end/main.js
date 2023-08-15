@@ -80,6 +80,20 @@ app.whenReady().then(() => {
     
     ipcMain.on("fatal-error", (data, message) => {
 		switch(message) {
+			case("exit"):
+				let options = {
+					title: "Exit",
+					message: "Are you sure you want to close Maets ?\nAny current download will be corrupted :)",
+					type: "warning",
+					buttons: ["Yes", "No"],
+				};
+				var choosenButton = dialog.showMessageBoxSync(mainWindow, options);
+				
+				if(choosenButton == 0){
+					app.quit();
+				}
+				
+				break;
 			case("megacmd-not-installed"):
 				fatalErrorPopup("MegaCMD not Installed", "Please install MegaCMD in it's default path.");
 				break;
