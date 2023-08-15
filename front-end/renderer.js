@@ -255,6 +255,10 @@ function logout() {
     document.getElementById("loadingScreen").style.display = "block";
 }
 
+function exit() {
+	ipcRenderer.send("fatal-error", "exit");
+}
+
 function clearContainers() {
     const containers = document.getElementById("containers");
     while (containers.firstChild) {
