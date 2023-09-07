@@ -267,8 +267,32 @@ function invokeLibrary() {
     container.append(sample);
 }
 
+function invokeGame(game) {
+//	document.getElementById("backgroundImageContainer").style.backgroundImage = "url('./image_contents/" + game.id + "_background.jpg')";
+	ipcRenderer.send("send-to-backend", "isInLibrary " + game.id);
+	
+	const container = document.getElementById("container");
+	
+	const gameBanner = document.createElement("img");
+	gameBanner.src = "./image_contents/" + game.id + "_background.jpg";
+	gameBanner.id = "gameBackground";
+	
+	const description = document.createElement("div");
+	description.id = "gameDescription"
+	description.innerText = game.description;
+	
+	const gameButtonsDiv = document.createElement("div");
+	gameButtonsDiv.id = "gameButtons";
 
-    containers.append(sample);
+	const gameTitle = document.createElement("a");
+	gameTitle.innerText = game.name;
+	gameTitle.id = "";
+	
+	const addToLibraryButton = document.createElement("button");
+	addToLibraryButton.innerText = "Add To Library"; 
+	
+	gameButtonsDiv.append(gameTitle, addToLibraryButton);
+	container.append(gameBanner, description, gameButtonsDiv);
 }
 
 function logout() {
