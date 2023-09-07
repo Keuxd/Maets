@@ -164,6 +164,66 @@ body {
     font-family: "my-font";
     animation: text-color 6s ease-in-out infinite;
   }
+  
+  #gameBackground {
+	  position: relative;
+	  width: 700px;
+	  right: -40px;
+	  bottom: -40px;
+	  border: 3px #E0D921;
+	  border-style: solid;
+  }
+  
+  #gameDescription {
+	  font-family: "my-font";
+	  font-size: 16px;
+	  position: absolute;
+	  bottom: 0px;
+	  right: -40px;
+	  margin-right: 80px;
+	  margin-left: 40px;
+	  background-color: #e0d921;
+  }
+  
+  #gameButtons a {
+	  font-family: "my-font";
+	  font-size: 30px;
+	  position: relative;
+	  color: whitesmoke;
+  }
+  
+  #gameButtons {
+	  width: 300px;
+	  height: 150px;
+	  background-color: #e0d921;
+	  position: fixed;
+	  top: 39px;
+	  float: right;
+  }
+  
+  #gameButtons button {
+	border: 6px solid #5e5e5e;
+	border-radius: 8px;
+	background-color: #5e5e5e;
+	color: #e7e7e7;
+	font-family: "my-font";
+	font-size: 20px;
+	position: relative;
+	cursor: pointer;
+  }
+  
+  #addToLibraryButton {
+	border: 6px solid #5e5e5e;
+	border-radius: 8px;
+	background-color: #5e5e5e;
+	color: #e7e7e7;
+	font-family: "my-font";
+	font-size: 20px;
+	position: relative;
+	cursor: pointer;
+	right: -540px;
+	bottom: -600px;
+  }
 
   @keyframes text-color {
     100%,
