@@ -267,13 +267,6 @@ function invokeLibrary() {
     container.append(sample);
 }
 
-function invokeLibrary() {
-    clearContainers();
-
-    const containers = document.getElementById("containers");
-    const sample = document.createElement("p");
-    sample.id = "library";
-    sample.innerHTML = "LIBRARY GONE BRRRRRRRRRRR";
 
     containers.append(sample);
 }
