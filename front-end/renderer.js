@@ -8,28 +8,33 @@ ipcRenderer.on("java-backend-json", (event, response) => {
 			break;
 			
         case "Shop":
-            const containerShop = document.createElement("div");
-            containerShop.id = "containerShop";
-            const containers = document.getElementById("containers");
-
-            response.games.forEach(game => {				
-                const divShop = document.createElement("div");
-                divShop.className = "shopDivs"
-	
-                const gameTitle = document.createElement("h2");
-                gameTitle.className = "shopTitles";
-                gameTitle.innerText = game.name;
-
-                const gameDesc = document.createElement("p");
-                gameDesc.className = "shopDescs";
-                gameDesc.innerText = game.description;
-
-                divShop.appendChild(gameTitle);
-                divShop.appendChild(gameDesc);
-
-                containerShop.appendChild(divShop);
-            });
-            containers.append(containerShop);
+			const container = document.getElementById("container");
+		    const productList = document.createElement("ul");
+		    productList.className = "product-list";
+		    
+		    for(i = 0; i < response.games.length; i++) {
+				const game = response.games[i];
+				
+				const element = document.createElement("li");
+				const a = document.createElement("a");
+				a.onclick = function() {
+					clearContainer();
+					invokeGame(game);
+				};
+				
+				const image = document.createElement("img");
+				image.src = "./image_contents/" + game.id + "_banner.jpg";
+				image.alt = game.name + " Banner";
+				
+				const span = document.createElement("span");
+				span.className = "product-name";
+				span.innerText = game.name;
+				
+				a.append(image, span);
+				element.append(a);
+				productList.append(element);
+			}
+		    container.append(productList);
             break;
             
         case "Library":
