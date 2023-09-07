@@ -78,6 +78,19 @@ public class Requests {
 				break;
 			}
 			
+			case "isInLibrary" : {
+				try {
+					boolean answer = OnlineConfigs.isInLibrary(requestSplit[1]);
+					Electron.response("isInLibrary " + requestSplit[1] + " " + answer);
+				} catch(IOException e) {
+					e.printStackTrace();
+					JsonObject json = new JsonObject();
+					json.addProperty("type", "Error");
+					Electron.response(json.toString());
+				}
+				break;
+			}
+			
 			case "addToLibrary" : {
 				try {
 					int gameId = Integer.parseInt(requestSplit[1]);
