@@ -213,8 +213,11 @@ function invokeMainScreen(username) {
     const container = document.createElement("div");
     container.id = "container";
     
+    const backgroundImageContainer = document.createElement("div");
+    backgroundImageContainer.id = "backgroundImageContainer";
 
     document.getElementById("loadingScreen").style.display = "none";
+    container.append(backgroundImageContainer);
     mainScreen.append(userProfilePicture, homeButton, shopButton, libraryButton, userNameSideHeader, logoutButton, exitButton, container);
     document.body.appendChild(mainScreen);
 }
@@ -292,4 +295,7 @@ function clearContainer() {
 		container.removeChild(container.firstChild);
 	}
 	
+	const backgroundImageContainer = document.createElement("div");
+	backgroundImageContainer.id = "backgroundImageContainer";
+	container.append(backgroundImageContainer);
 }
