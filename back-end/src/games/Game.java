@@ -3,7 +3,7 @@ package games;
 public class Game {
 	
 	public enum Games {
-		STARDEW_VALLEY, VAMPIRE_SURVIVORS, BLOONS_TD6, MINECRAFT, HADES, GRAND_THEFT_AUTO_5
+		SECRETS_OF_GRINDEA, VAMPIRE_SURVIVORS
 	}
 		
 	private int id;
@@ -12,61 +12,25 @@ public class Game {
 	
 	public Game(Games game) {
 		switch(game) {
-			case STARDEW_VALLEY:
-				stardewValley();
+			case SECRETS_OF_GRINDEA:
+				secretsOfGrindea();
 				break;
 			case VAMPIRE_SURVIVORS:
 				vampireSurvivors();
 				break;
-			case BLOONS_TD6:
-				bloonsTd6();
-				break;
-			case GRAND_THEFT_AUTO_5:
-				grandTheftAuto5();
-				break;
-			case HADES:
-				hades();
-				break;
-			case MINECRAFT:
-				minecraft();
-				break;
 		}
 	}
 	
-	private void stardewValley() {
-		this.id = 1;
-		this.name = "Stardew Valley";
-		this.description = "You've inherited your grandfather's old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?";
+	private void secretsOfGrindea() {
+		this.id = 0;
+		this.name = "Secrets Of Grindea";
+		this.description = "Secrets of Grindea is an old-school Action RPG with co-op support for up to 4 players.\nIt is a tribute to and sometimes a parody of the old SNES games so many of us grew up with and loved!\nJourney through fantastical lands and battle tons of different enemies and bosses in your quest for truth, friendship and, above all, finding the world's rarest treasures!";
 	}
 	
 	private void vampireSurvivors() {
-		this.id = 2;
+		this.id = 1;
 		this.name = "Vampire Survivors";
-		this.description = "Sobrevive ai pae";
-	}
-
-	private void bloonsTd6() {
-		this.id = 3;
-		this.name = "Bloons TD6";
-		this.description = "Mamacos";
-	}
-	
-	private void minecraft() {
-		this.id = 4;
-		this.name = "Minecraft";
-		this.description = "Jogo quadrado goes brrrrrrrr";
-	}
-	
-	private void hades() {
-		this.id = 5;
-		this.name = "Hades";
-		this.description = "Tenho que zerar ainda";
-	}
-	
-	private void grandTheftAuto5() {
-		this.id = 6;
-		this.name = "Grand Theft Auto 5";
-		this.description = "GTA";
+		this.description = "VS DESCRIPTION PLACEHOLDER";
 	}
 	
 	public int getId() {
