@@ -210,20 +210,21 @@ function invokeMainScreen(username) {
     exitButton.onclick = exit;
 	exitButton.textContent = "Exit";
 	
-    const containers = document.createElement("div");
-    containers.id = "containers";
+    const container = document.createElement("div");
+    container.id = "container";
+    
 
     document.getElementById("loadingScreen").style.display = "none";
-    mainScreen.append(userProfilePicture, homeButton, shopButton, libraryButton, userNameSideHeader, logoutButton, exitButton, containers);
+    mainScreen.append(userProfilePicture, homeButton, shopButton, libraryButton, userNameSideHeader, logoutButton, exitButton, container);
     document.body.appendChild(mainScreen);
 }
 
 function invokeHomePage() {
-    clearContainers();
+    clearContainer();
 
-    const containers = document.getElementById("containers");
+    const container = document.getElementById("container");
     const container1 = document.createElement("div");
-    container1.id = "container";
+    container1.id = "about1";
     const homepage1 = document.createElement("div");
     homepage1.id = "homepage";
     homepage1.textContent = "About Us";
@@ -231,7 +232,7 @@ function invokeHomePage() {
     abtus.id = "abtus";
     abtus.innerHTML = "Welcome to <span style = \"color: #e0d921\">Maets</span> ! That's our way to <br> give you easy acess to games in <br> a free way!";
     const container2 = document.createElement("div");
-    container2.id = "container2";
+    container2.id = "about2";
     const homepage2 = document.createElement("div");
     homepage2.id = "homepage2";
     homepage2.textContent = "Patch Notes";
@@ -245,17 +246,22 @@ function invokeHomePage() {
     container1.append(homepage1, abtus);
     container2.append(homepage2, patchVer, patchNote);
 
-    containers.append(container1, container2);
+    container.append(container1, container2);
 }
 
 function invokeShop() {
-    clearContainers();
+    clearContainer();
+    
     ipcRenderer.send("send-to-backend", "shop");
+}
 
-    const containers = document.getElementById("containers");
+function invokeLibrary() {
+    clearContainer();
+
+    const container = document.getElementById("container");
     const sample = document.createElement("div");
     sample.id = "shop";
-    containers.append(sample);
+    container.append(sample);
 }
 
 function invokeLibrary() {
@@ -279,9 +285,11 @@ function exit() {
 	ipcRenderer.send("fatal-error", "exit");
 }
 
-function clearContainers() {
-    const containers = document.getElementById("containers");
-    while (containers.firstChild) {
-        containers.removeChild(containers.firstChild);
-    }
+function clearContainer() {
+    const container = document.getElementById("container");
+    
+	while(container.firstChild) {
+		container.removeChild(container.firstChild);
+	}
+	
 }
