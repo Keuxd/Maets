@@ -59,6 +59,21 @@ ipcRenderer.on('java-backend-response', (event, response) => {
             if (response[1] === 'true') ipcRenderer.send("send-to-backend", "firstName");
             else invokeLoginCard();
             break;
+            
+        case "isInLibrary":
+			const container = document.getElementById("container");
+			const button = document.createElement("button");
+			button.innerText = "Add to Library";
+			button.id = "addToLibraryButton";
+			button.onclick = function() {
+				ipcRenderer.send("send-to-backend","addToLibrary " + response[1]);
+				button.remove();
+			};
+			
+			if(response[2] === "false")
+				container.append(button);
+				
+			break;
 
         case "mega":
 			switch(response[1]) {
