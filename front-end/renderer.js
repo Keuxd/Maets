@@ -64,21 +64,6 @@ ipcRenderer.on('java-backend-response', (event, response) => {
             if (response[1] === 'true') ipcRenderer.send("send-to-backend", "firstName");
             else invokeLoginCard();
             break;
-            
-        case "isInLibrary":
-			const container = document.getElementById("container");
-			const button = document.createElement("button");
-			button.innerText = "Add to Library";
-			button.id = "addToLibraryButton";
-			button.onclick = function() {
-				ipcRenderer.send("send-to-backend","addToLibrary " + response[1]);
-				button.remove();
-			};
-			
-			if(response[2] === "false")
-				container.append(button);
-				
-			break;
 
         case "mega":
 			switch(response[1]) {
@@ -269,7 +254,6 @@ function invokeOptions() {
 
 function invokeGame(game) {
 //	document.getElementById("backgroundImageContainer").style.backgroundImage = "url('./image_contents/" + game.id + "_background.jpg')";
-	ipcRenderer.send("send-to-backend", "isInLibrary " + game.id);
 	
 	const container = document.getElementById("container");
 	
@@ -288,10 +272,7 @@ function invokeGame(game) {
 	gameTitle.innerText = game.name;
 	gameTitle.id = "";
 	
-	const addToLibraryButton = document.createElement("button");
-	addToLibraryButton.innerText = "Add To Library"; 
 	
-	gameButtonsDiv.append(gameTitle, addToLibraryButton);
 	container.append(gameBanner, description, gameButtonsDiv);
 }
 
