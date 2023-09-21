@@ -188,41 +188,45 @@ body {
   #gameButtons a {
 	  font-family: "my-font";
 	  font-size: 30px;
-	  position: relative;
+	  position: absolute;
 	  color: whitesmoke;
+	  bottom: -24px;
+	  right: 70px;
   }
   
   #gameButtons {
-	  width: 300px;
-	  height: 150px;
-	  background-color: #e0d921;
-	  position: fixed;
-	  top: 39px;
 	  float: right;
+	  animation: slideRight 0.3s ease-in-out forwards;
   }
   
   #gameButtons button {
-	border: 6px solid #5e5e5e;
-	border-radius: 8px;
-	background-color: #5e5e5e;
-	color: #e7e7e7;
-	font-family: "my-font";
-	font-size: 20px;
-	position: relative;
-	cursor: pointer;
+	  width: 374px;
+	  background-color: #e0d921;
+	  border: 6px solid #e0d921;
+	  border-radius: 40px;
+	  color: rgb(0, 0, 0);
+	  font-family: "my-font";
+	  font-size: 35px;
+	  position: relative;
+	  cursor: pointer;
+	  right: 4px;
+	  top: 80px;
+	  box-sizing: border-box;
   }
   
-  #addToLibraryButton {
-	border: 6px solid #5e5e5e;
-	border-radius: 8px;
-	background-color: #5e5e5e;
-	color: #e7e7e7;
-	font-family: "my-font";
-	font-size: 20px;
-	position: relative;
-	cursor: pointer;
-	right: -540px;
-	bottom: -600px;
+  #gameButtons button:hover {
+	  background-color: #a6a119;
+	  border-color: #a6a119;
+	  transition: 0.3s;
+  }
+
+  @keyframes slideRight {
+	  0% {
+		  transform: translateX(374px);
+	  }
+	  100% {
+		  transform: translateX(65px);
+	  }
   }
 
   @keyframes text-color {
