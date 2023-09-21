@@ -271,8 +271,44 @@ function invokeGame(game) {
 	const gameTitle = document.createElement("a");
 	gameTitle.innerText = game.name;
 	
+	const gameButton = document.createElement("button");
+	switch(game.gameState) {
+		case 0 :
+			gameButton.innerText = "DOWNLOAD";
+			gameButton.onclick = function(){ download(game.id); }
+			break;
+		
+		case 1 :
+			gameButton.innerText = "INSTALL";
+			gameButton.onclick = function() { install(game.id); }
+			break;
+		
+		case 2 :
+			gameButton.innerText = "PLAY"; 
+			gameButton.onclick = function() { play(game.id); }
+			break;
+		
+		case 9 :
+		default : 
+			gameButton.innerText = "ERROR";
+			gameButton.onclick = function() { exit(); }
+			break;
+	}
 	
+	gameButtonsDiv.append(gameTitle, gameButton);
 	container.append(gameBanner, description, gameButtonsDiv);
+}
+
+function download(gameId) {
+	ipcRenderer.send("send-to-backend", "download " + gameId);
+}
+
+function install(gameId) {
+	ipcRenderer.send("send-to-backend", "install " + gameId);
+}
+
+function play(gameId) {
+	ipcRenderer.send("send-to-backend", "play " + gameId);
 }
 
 function logout() {
