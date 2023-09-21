@@ -270,7 +270,6 @@ function invokeGame(game) {
 
 	const gameTitle = document.createElement("a");
 	gameTitle.innerText = game.name;
-	gameTitle.id = "";
 	
 	
 	container.append(gameBanner, description, gameButtonsDiv);
