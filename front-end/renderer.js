@@ -193,7 +193,7 @@ function invokeMainScreen(username) {
     const libraryButton = document.createElement("img");
     libraryButton.id = "button3";
     libraryButton.src = "./image_contents/library.png";
-    libraryButton.onclick = invokeLibrary;
+    libraryButton.onclick = invokeOptions;
     const userNameSideHeader = document.createElement("div");
     userNameSideHeader.id = "sideHeader";
     const name = document.createElement("p");
@@ -258,12 +258,12 @@ function invokeShop() {
     ipcRenderer.send("send-to-backend", "shop");
 }
 
-function invokeLibrary() {
+function invokeOptions() {
     clearContainer();
 
     const container = document.getElementById("container");
     const sample = document.createElement("div");
-    sample.id = "shop";
+    sample.id = "options";
     container.append(sample);
 }
 
