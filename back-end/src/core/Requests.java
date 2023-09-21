@@ -78,6 +78,28 @@ public class Requests {
 				break;
 			}
 			
+			case "download" : {
+				
+				try {
+					
+				} catch(Exception e) {
+					e.printStackTrace();
+					Electron.response("");
+				}
+				
+				break;
+			}
+			
+			case "install" : {
+				
+				break;
+			}
+			
+			case "play" : {
+				
+				break;
+			}
+			
 			case "isInLibrary" : {
 				try {
 					boolean answer = OnlineConfigs.isInLibrary(requestSplit[1]);
