@@ -29,7 +29,7 @@ public class LocalConfigs {
 	private static void writeDefaultInfoInConfigFile() throws IOException {
 		JsonObject json = new JsonObject();
 		json.addProperty("type", "LocalConfigs");
-		json.add("gamesStates", new JsonObject());
+		json.add("gameState", new JsonObject());
 		
 		String defaultInfo = new Gson().toJson(json);
 		
@@ -38,7 +38,7 @@ public class LocalConfigs {
 	
 	public static void changeGameState(String gameId, int gameState) throws IOException {
 		JsonObject json = ConfigUtils.getContentInChannelAsJson(localConfigFile);
-		JsonObject games = json.get("gamesStates").getAsJsonObject();
+		JsonObject games = json.get("gameState").getAsJsonObject();
 		
 		// If the key already exists it'll be simply overwritten
 		games.addProperty(gameId, gameState);
@@ -50,7 +50,7 @@ public class LocalConfigs {
 	
 	public static int getGameState(int gameId) throws IOException {
 		JsonObject json = ConfigUtils.getContentInChannelAsJson(localConfigFile);
-		JsonElement game = json.get("gamesStates").getAsJsonObject().get(Integer.toString(gameId));
+		JsonElement game = json.get("gameState").getAsJsonObject().get(Integer.toString(gameId));
 		
 		// Game is not in state, so it can be downloaded, code 0
 		if(game == null) return 0;
