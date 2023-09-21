@@ -63,10 +63,7 @@ public class Requests {
 				JsonObject json = new JsonObject();
 				try {
 					json.addProperty("type", "Shop");
-					JsonArray games = JsonParser.parseString(new Gson().toJson(Game.getAllGames())).getAsJsonArray();
-					games = OnlineConfigs.addIsInLibraryToGamesJsonArray(games);
-
-					json.add("games", games);
+					json.add("games", OnlineConfigs.addIsInLibraryToGamesJsonArray(LocalConfigs.addGameStateToJsonArray(GamesUtil.getAllGamesInJsonArray())));								
 				} catch(IOException e) {
 					e.printStackTrace();
 					json.addProperty("type", "Error");
