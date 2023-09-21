@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -55,6 +56,23 @@ public class LocalConfigs {
 		if(game == null) return 0;
 		
 		return game.getAsInt();
+	}
+	
+	public static JsonArray addGameStateToJsonArray(JsonArray games) throws IOException {
+		JsonObject state = ConfigUtils.getContentInChannelAsJson(localConfigFile).getAsJsonObject("gameState");
+		
+		for(int i = 0; i < games.size(); i++) {
+			JsonObject game = games.get(i).getAsJsonObject();
+			String gameId = game.get("id").getAsString();
+			
+			if(state.get(gameId) == null) {
+				game.addProperty("gameState", 0);
+			} else {
+				game.addProperty("gameState", state.get(gameId).getAsInt());
+			}
+		}
+		
+		return games;
 	}
 	
 	public static JsonObject getJson() throws IOException {
