@@ -8,7 +8,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import games.Game;
+import games.GamesUtil;
 
 public class OnlineConfigs {
 	
@@ -38,7 +38,7 @@ public class OnlineConfigs {
 		
 		json.getAsJsonObject("gamesInLibrary").add(Integer.toString(gameId), game);
 		
-		System.out.println("\"" + Game.getGameFromId(gameId).getName() + "\" added to library.");
+		System.out.println("\"" + GamesUtil.getGameFromId(gameId).getName() + "\" added to library.");
 		ConfigUtils.writeToFileChannel(new Gson().toJson(json), onlineConfigFile);
 	}
 	
