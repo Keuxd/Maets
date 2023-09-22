@@ -366,9 +366,9 @@ body {
 
   #button3 {
     top: 62%;
-    left: 127px;
+    left: 133px;
     position: absolute;
-    height: 48px;
+    height: 56px;
     width: auto;
     z-index: 3;
     cursor: pointer;
