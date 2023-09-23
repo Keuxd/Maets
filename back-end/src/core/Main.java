@@ -10,6 +10,8 @@ public class Main {
 	public static final String MAETS_FOLDER_PATH = System.getenv("LOCALAPPDATA") + "/Maets/";
 	public static final String GAMES_FOLDER_PATH = MAETS_FOLDER_PATH + "Games/";
 	
+	public static Thread currentRunningGame;
+	
 	public static void main(String[] args) throws IOException {
 		Electron.init();
 		
