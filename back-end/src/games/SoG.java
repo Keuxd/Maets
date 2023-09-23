@@ -37,5 +37,15 @@ public class SoG extends AbstractGame {
 		LocalConfigs.changeGameState(getId() + "", 1);
 	}
 	
+	@Override
+	public boolean isDownloadAvailable() {
+		try {
+			GitHub gh = new GitHub("Uekra", "SoG", "main", "SoG.db1");
+			return GitHub.isFileAvailable(gh);
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 }
