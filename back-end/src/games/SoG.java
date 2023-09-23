@@ -19,6 +19,23 @@ public class SoG extends AbstractGame {
 				);
 		
 	}
+
+	@Override
+	public void download() throws Exception {
+		createLocalGameFolderPath();
+		
+		File tempFileFolder = new File(getLocalGameFolderPath() + "Temp/");
+		tempFileFolder.mkdir();
+		
+		GitHub gh = new GitHub("Uekra", "SoG", "main", "SoG.db");
+		for(int i = 1; i <= 100; i++) {
+			gh.changeFileName("SoG.db" + i);
+			GitHub.downloadFile(gh, tempFileFolder.getPath() + "/SoG.db" + i);
+//			Electron.response("download " + getId() + " " + i);
+		}
+		
+		LocalConfigs.changeGameState(getId() + "", 1);
+	}
 	
 	
 }
