@@ -1,5 +1,8 @@
 package games;
 
+import java.io.File;
+import java.nio.file.Files;
+
 public abstract class AbstractGame {
 	
 	// FrontEnd Data
@@ -26,6 +29,21 @@ public abstract class AbstractGame {
 	
 	public abstract void run() throws Exception;
 
+	public boolean deleteDir(File file) {
+		try {
+			File[] contents = file.listFiles();
+			if(contents != null) {
+				for(File f : contents) {
+					if(!Files.isSymbolicLink(f.toPath())) {
+						deleteDir(f);
+					}
+				}
+			}
+			file.delete();
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 	
 	public int getId() {
