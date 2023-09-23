@@ -11,6 +11,17 @@ public abstract class AbstractGame {
 		this.id = id;
 		this.name = name;
 		this.description = description;
+	
+	public abstract void download() throws Exception;
+	
+	public abstract boolean isDownloadAvailable();
+
+	public abstract void install() throws Exception;
+	
+	public abstract void uninstall() throws Exception;
+	
+	public abstract void run() throws Exception;
+
 	}
 	
 	public int getId() {
