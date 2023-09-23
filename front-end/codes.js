@@ -36,7 +36,7 @@
     	- 0 : Not downloaded yet, can be downloaded
 		- 1 : Downloaded, can be installed
 		- 2 : Installed, ready to play
-		- 9 : Error during download || Error during installation
+		- 9 : Error during download || Error during installation || Is Downloading or Installing
         
 */// PS: All responses use this model: 'command response_code'
 //// Example: 'login 54'
