@@ -65,6 +65,11 @@ public class SoG extends AbstractGame {
 	}
 
 	@Override
+	public void uninstall() throws Exception {
+		deleteDir(new File(getLocalGameFolderPath()));
+	}
+
+	@Override
 	public void run() throws Exception {
 		File exe = new File(getLocalGameFolderPath() + "database_maets/Secrets of Grindea/Game/Secrets Of Grindea.exe");
 		Process game = Runtime.getRuntime().exec(exe.getPath(), null, exe.getParentFile());
