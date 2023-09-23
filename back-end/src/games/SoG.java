@@ -64,5 +64,26 @@ public class SoG extends AbstractGame {
 		LocalConfigs.changeGameState(getId() + "", 2);
 	}
 
+	@Override
+	public void run() throws Exception {
+		File exe = new File(getLocalGameFolderPath() + "database_maets/Secrets of Grindea/Game/Secrets Of Grindea.exe");
+		Process game = Runtime.getRuntime().exec(exe.getPath(), null, exe.getParentFile());
+		
+		if(Main.currentRunningGame == null) {
+			Main.currentRunningGame = new Thread() {
+				@Override
+				public void run() {
+					try {
+						game.waitFor();
+						Main.currentRunningGame = null;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			};
+			Main.currentRunningGame.setName("Current Running Game Thread:" + getId());
+			Main.currentRunningGame.run();
+		}
+	}
 	
 }
