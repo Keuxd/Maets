@@ -1,5 +1,6 @@
 package core;
 
+import java.io.File;
 import java.io.IOException;
 
 import config.LocalConfigs;
@@ -15,9 +16,16 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Electron.init();
 		
+		initializeFiles();
+		
+		System.out.println("Finish main thread");
+	}
+	
+	private static void initializeFiles() throws IOException {
 		OnlineConfigs.initialize(MAETS_FOLDER_PATH);
 		LocalConfigs.initialize(MAETS_FOLDER_PATH);
 		
-		System.out.println("Finish main thread");
+		// Games Folder
+		new File(GAMES_FOLDER_PATH).mkdir();
 	}
 }
