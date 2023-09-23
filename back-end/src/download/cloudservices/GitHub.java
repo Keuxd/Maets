@@ -2,7 +2,6 @@ package download.cloudservices;
 
 import java.net.URL;
 
-import core.Main;
 import download.CloudStorageDownloader;
 
 public class GitHub extends CloudStorageDownloader {
@@ -29,7 +28,6 @@ public class GitHub extends CloudStorageDownloader {
 		
 		URL url = new URL(link);
 		long fileSize = url.openConnection().getContentLengthLong();
-		System.out.println(fileSize);
 		
 		if(fileSize == -1 || fileSize == 221599)
 			return false;
