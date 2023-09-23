@@ -166,7 +166,7 @@ function invokeMainScreen(username) {
     mainScreen.id = "mainScreen";
     const userProfilePicture = document.createElement("img");
     userProfilePicture.id = "icon";
-    userProfilePicture.src = "./image_contents/Nobara.jpg";
+    userProfilePicture.src = "./image_contents/user.png";
     const homeButton = document.createElement("img");
     homeButton.id = "button1";
     homeButton.src = "./image_contents/home.png";
