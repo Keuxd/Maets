@@ -39,4 +39,12 @@ public abstract class AbstractGame {
 	public String getDescription() {
 		return this.description;
 	}
+	
+	public String getLocalGameFolderPath() {
+		return this.localGameFolderPath;
+	}
+	
+	public boolean createLocalGameFolderPath() {
+		return new File(this.localGameFolderPath).mkdir();
+	}
 }
