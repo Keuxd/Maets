@@ -47,5 +47,22 @@ public class SoG extends AbstractGame {
 			return false;
 		}
 	}
+
+	@Override
+	public void install() throws Exception {
+		// Installing
+		File tempFileFolder = new File(getLocalGameFolderPath() + "Temp/");
+		File mergedFile = new File(tempFileFolder.getPath() + "/SoG.zip");
+		File fileOne = new File(tempFileFolder + "/SoG.db1");
+		FileSplitMerge.mergeFilesInPercentage(fileOne, mergedFile);
+		ZipExtractor.extract(mergedFile.getPath(), getLocalGameFolderPath());		
+		
+		// Cleaning installation folder
+		deleteDir(tempFileFolder);
+		mergedFile.delete();
+		
+		LocalConfigs.changeGameState(getId() + "", 2);
+	}
+
 	
 }
