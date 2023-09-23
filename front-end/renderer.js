@@ -177,7 +177,7 @@ function invokeMainScreen(username) {
     shopButton.onclick = invokeShop;
     const libraryButton = document.createElement("img");
     libraryButton.id = "button3";
-    libraryButton.src = "./image_contents/library.png";
+    libraryButton.src = "./image_contents/option.png";
     libraryButton.onclick = invokeOptions;
     const userNameSideHeader = document.createElement("div");
     userNameSideHeader.id = "sideHeader";
