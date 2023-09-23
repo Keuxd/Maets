@@ -7,10 +7,14 @@ public abstract class AbstractGame {
 	private String name;
 	private String description;
 	
-	public AbstractGame(int id, String name, String description) {
+	private String localGameFolderPath;
+	
+	public AbstractGame(int id, String name, String description, String localGameFolderPath) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.localGameFolderPath = localGameFolderPath;
+	}
 	
 	public abstract void download() throws Exception;
 	
