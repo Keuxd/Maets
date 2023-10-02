@@ -21,9 +21,8 @@ public class SoG extends AbstractGame {
 	}
 
 	@Override
-	public void download() throws Exception {
+	public void download(int serverId) throws Exception {
 		createLocalGameFolderPath();
-		
 		File tempFileFolder = new File(getLocalGameFolderPath() + "Temp/");
 		tempFileFolder.mkdir();
 		

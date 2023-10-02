@@ -14,10 +14,10 @@ public class VS extends AbstractGame {
 	}
 
 	@Override
-	public void download() throws Exception {}
+	public void download(int serverId) throws Exception {}
 
 	@Override
-	public boolean isDownloadAvailable() {
+	public boolean isDownloadAvailable(int serverId) {
 		return false;
 	}
 

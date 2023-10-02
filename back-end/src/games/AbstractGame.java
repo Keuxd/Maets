@@ -19,9 +19,9 @@ public abstract class AbstractGame {
 		this.localGameFolderPath = localGameFolderPath;
 	}
 	
-	public abstract void download() throws Exception;
-	
-	public abstract boolean isDownloadAvailable();
+	// 0 == GitHub | 1 == Discord
+	public abstract void download(int serverId) throws Exception;
+	public abstract boolean isDownloadAvailable(int serverId);	
 
 	public abstract void install() throws Exception;
 	
