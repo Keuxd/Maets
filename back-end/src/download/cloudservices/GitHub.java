@@ -1,6 +1,7 @@
 package download.cloudservices;
 
 import java.net.URL;
+import java.net.URLConnection;
 
 import download.CloudStorageDownloader;
 
@@ -26,12 +27,14 @@ public class GitHub extends CloudStorageDownloader {
 		String link = String.format("https://github.com/%s/%s/raw/%s/%s", gh.getUser(), gh.getRepository(), gh.getBranch(), gh.getFileName());
 		
 		URL url = new URL(link);
-		long fileSize = url.openConnection().getContentLengthLong();
+		URLConnection connection = url.openConnection();
 		
-		if(fileSize == -1 || fileSize == 221599)
-			return false;
+		String contentType = connection.getContentType();
 		
-		return true;
+		if(contentType.equals("application/octet-stream"))
+			return true;
+		
+		return false;
 	}
 	
 	public String getUser() {
