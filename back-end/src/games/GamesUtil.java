@@ -7,7 +7,7 @@ public class GamesUtil {
 	
 	private static AbstractGame[] getAllGames() {
 		return new AbstractGame[] {
-				new SoG(), new VS()
+				new SoG(), new VS(), new DSCSCE()
 		};
 	}
 	
