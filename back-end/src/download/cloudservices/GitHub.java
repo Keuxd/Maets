@@ -11,11 +11,10 @@ public class GitHub extends CloudStorageDownloader {
 	private String branch;
 	private String fileName;
 	
-	public GitHub(String user, String repository, String branch, String fileName) {
+	public GitHub(String user, String repository, String branch) {
 		this.user = user;
 		this.repository = repository;
 		this.branch = branch;
-		this.fileName = fileName;
 	}
 
 	public static void downloadFile(GitHub gh, String outputFilePath) throws Exception {
