@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,12 +18,15 @@ public abstract class CloudStorageDownloader {
 	
 	protected static void downloadFromUrl(String link, String localFilePath) throws IOException {
 		URL url = new URL(link);
-		long totalFileSize = url.openConnection().getContentLengthLong();
+		URLConnection connection = url.openConnection();
+		connection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36");
+		
+		long totalFileSize = connection.getContentLengthLong();
 		
 		Path localPath = Paths.get(localFilePath);
 		Thread logThread = initFileSizeLoggingThread(localPath, totalFileSize);
 
-		try (InputStream in = url.openStream()){
+		try (InputStream in = connection.getInputStream()){
 			logThread.start();
 			Files.copy(in, localPath, StandardCopyOption.REPLACE_EXISTING);
 		} catch(Exception e) {
