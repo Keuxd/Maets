@@ -1,3 +1,4 @@
+const { debug } = require('console');
 const { app , BrowserWindow, ipcMain, dialog } = require('electron');
 
 let mainWindow;
@@ -100,6 +101,23 @@ app.whenReady().then(() => {
 			case("unexpected"):
 				fatalErrorPopup("MegaCMD error", "An unexpected error ocurred.")
 				break;
+		}
+	})
+	
+	ipcMain.on("test", (data, message) => {
+		if(message === "info"){
+			var popupWindow = new BrowserWindow({
+			    parent: mainWindow,
+			    modal: true,
+			    show: false,
+			    width: 400,
+			    height: 200,
+			    webPreferences: {
+			      	nodeIntegration: true
+			    }
+		  	});
+		  	popupWindow.loadFile("popup.html");
+		  	popupWindow.show();
 		}
 	})
     

@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron');
-const { LoginResponseHandler, isValidEmail } = require('./auth');
+const { LoginResponseHandler, isValidEmail } = require('./scripts/auth');
 
 ipcRenderer.on("java-backend-json", (event, response) => {
     switch (response.type) {
@@ -300,7 +300,9 @@ function invokeGame(game) {
 }
 
 function download(gameId) {
-	ipcRenderer.send("send-to-backend", "download " + gameId);
+	const htmlElement = document.documentElement;
+	htmlElement.style.filter = "brightness(0.1)";
+	ipcRenderer.send("send-to-backend", "availability");
 }
 
 function install(gameId) {
