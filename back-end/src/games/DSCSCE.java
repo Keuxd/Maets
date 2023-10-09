@@ -43,4 +43,10 @@ public class DSCSCE extends AbstractGame {
 		
 	}
 
+	@Override
+	public boolean[] getAvailableDownloads() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -30,4 +30,10 @@ public class VS extends AbstractGame {
 	@Override
 	public void run() throws Exception {}
 
+	@Override
+	public boolean[] getAvailableDownloads() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

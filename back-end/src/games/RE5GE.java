@@ -49,4 +49,10 @@ public class RE5GE extends AbstractGame {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean[] getAvailableDownloads() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

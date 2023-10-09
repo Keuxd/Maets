@@ -76,6 +76,14 @@ public class SoG extends AbstractGame {
 		}
 	}
 	
+	@Override
+	public boolean[] getAvailableDownloads() {
+		boolean[] availability = new boolean[2];
+		availability[0] = isDownloadAvailableGitHub();
+		availability[1] = isDownloadAvailableDiscord();
+		return availability;
+	}
+	
 	private boolean isDownloadAvailableGitHub() {
 		try {
 			GitHub gh = new GitHub("Uekra", "SoG", "main");
