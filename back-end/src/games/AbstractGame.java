@@ -22,7 +22,8 @@ public abstract class AbstractGame {
 	// 0 == GitHub | 1 == Discord
 	public abstract void download(int serverId) throws Exception;
 	public abstract boolean isDownloadAvailable(int serverId);	
-
+	public abstract boolean[] getAvailableDownloads();
+	
 	public abstract void install() throws Exception;
 	
 	public abstract void uninstall() throws Exception;
