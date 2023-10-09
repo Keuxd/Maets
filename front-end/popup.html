@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Window</title>
+</head>
+<body>
+  <button id="openPopup">Open Popup</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    // Handle button click to open the popup
+    document.getElementById('openPopup').addEventListener('click', () => {
+      ipcRenderer.send('open-popup');
+    });
+  </script>
+</body>
+</html>
