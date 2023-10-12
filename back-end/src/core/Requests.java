@@ -2,10 +2,12 @@ package core;
 
 import java.io.IOException;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import config.LocalConfigs;
 import config.OnlineConfigs;
+import games.AbstractGame;
 import games.GamesUtil;
 import mega.CommandsEnum;
 import mega.Mega;
@@ -73,9 +75,33 @@ public class Requests {
 				break;
 			}
 			
-			case "download" : {
-				
+			case "availability" : {
+				JsonObject json = new JsonObject();
 				try {
+					json.addProperty("type", "Availability");
+					AbstractGame game = GamesUtil.getGameFromId(Integer.parseInt(requestSplit[1]));
+					boolean[] availableDownloads = game.getAvailableDownloads();
+					
+					JsonArray servers = new JsonArray(availableDownloads.length);
+					servers.add(availableDownloads[0]);
+					servers.add(availableDownloads[1]);
+					json.add("servers", servers);
+				} catch(Exception e) {
+					e.printStackTrace();
+					json.addProperty("type", "Error");
+				}
+				
+				Electron.response(json.toString());
+				break;
+			}
+			
+			case "download" : {				
+				try {
+					AbstractGame game = GamesUtil.getGameFromId(Integer.parseInt(requestSplit[1]));
+					boolean isAvailable = game.isDownloadAvailable(0);
+					
+					Electron.response("download " + requestSplit[1] + " " + isAvailable);
+					
 					
 				} catch(Exception e) {
 					e.printStackTrace();
