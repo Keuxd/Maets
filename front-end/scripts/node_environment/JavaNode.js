@@ -41,7 +41,13 @@ class JavaNode {
 			JavaNode.processResponse(JSON.parse(response));
 			//WindowsNode.MAIN_WINDOW.webContents.send("java-backend-response", response.split(" "));
 		})
-	}	
+	}
+	
+	static sendMessageToJava(message) {
+		console.log("- Sent: " + message);
+		JavaNode.CLIENT.write(message + "\r");
+	}
+	
 }
 
 module.exports = { JavaNode };
