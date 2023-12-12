@@ -18,12 +18,6 @@ class WindowsNode {
 		
 		WindowsNode.MAIN_WINDOW.loadFile("main.html");
 	}
-
-	static createPopupWindow() {
-		let popupWindow = new BroswerWindow({
-			
-		});
-	}	
 	
 }
 
