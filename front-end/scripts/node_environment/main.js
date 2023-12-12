@@ -6,20 +6,19 @@ const { UtilNode } = require("./UtilNode");
 app.whenReady().then(() => {
 
 	if(!isJava()) {
-		UtilNode.fatalErrorPopup("Executable error", "Please open using Maets.bat");
+		UtilNode.fatalErrorPopup("Executable Error", "Please open using Maets.exe");
 		return;
 	}
 
 	// Connects to Java environment
 	JavaNode.connectClientSocket();
-	
 	// Starts events listening for communication
 	JavaNode.setupListeners(ipcMain);
     WindowsNode.createMainWindow();
     
     addFatalErrorEvent();
     
-    JavaNode.CLIENT.write("mega\r");
+    JavaNode.sendMessageToJava("mega");
 });
 
 function addFatalErrorEvent() {
