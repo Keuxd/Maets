@@ -29,8 +29,7 @@ class JavaNode {
 	static setupListeners(ipcMain) {
 		// Sending messages from webcontext into server
 		ipcMain.on("send-to-backend", (event, message) => {
-			console.log("- Sent: " + message);
-			JavaNode.CLIENT.write(message + "\r");
+			JavaNode.sendMessageToJava(message);
 		})
 		
 		// Receiving messages from server and sending to webcontext
