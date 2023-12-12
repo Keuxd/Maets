@@ -48,6 +48,27 @@ class JavaNode {
 		JavaNode.CLIENT.write(message + "\r");
 	}
 	
+	static processResponse(response) {
+		switch(response.type) {
+			case "mega" : {
+				switch(response.response) {
+					case -1: UtilNode.fatalErrorPopup("Error", "Java Console Error.."); break;
+					case 2: UtilNode.fatalErrorPopup("Error", "MegaCMD Not Found.."); break;
+					default: JavaNode.sendMessageToJava("isLoggedIn"); break;
+				}
+				break;
+			}
+			
+			case "isLoggedIn" : {
+				if(response.response) {
+					UtilNode.sendToWebContext("invokeLoginScreen");
+				} else {
+					UtilNode.sendToWebContext("invokeLoginScreen");
+				}
+				break;
+			}
+		}
+	}
 }
 
 module.exports = { JavaNode };
