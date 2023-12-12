@@ -38,12 +38,8 @@ class JavaNode {
 			const response = data.toString().trim();
 			console.log("+ Received: " + response);
 			
-			const availableJson = UtilNode.isJson(response);
-        	if(availableJson[0]) {
-				WindowsNode.MAIN_WINDOW.webContents.send("java-backend-json", availableJson[1]);
-			} else {
-        		WindowsNode.MAIN_WINDOW.webContents.send('java-backend-response', response.split(' '));
-			}
+			JavaNode.processResponse(JSON.parse(response));
+			//WindowsNode.MAIN_WINDOW.webContents.send("java-backend-response", response.split(" "));
 		})
 	}	
 }
