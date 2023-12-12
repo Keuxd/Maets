@@ -26,6 +26,7 @@ public class FileSplitMerge {
             fos.write(buffer, 0, bytesRead);
             fos.close();
             fileNumber++;
+            System.out.println(fileNumber);
         }
         fis.close();
     }
@@ -42,7 +43,7 @@ public class FileSplitMerge {
     		String currentFilePath = fileOne.getPath().split("db")[0] + "db" + (i + 1);
     		File currentFile = new File(currentFilePath);
     		FileInputStream fis = new FileInputStream(currentFile);
-    		
+    		System.out.println(i+1);
     		byte[] buffer = new byte[(int) currentFile.length()];
     		fis.read(buffer);
     		fos.write(buffer);
