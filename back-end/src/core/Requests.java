@@ -45,7 +45,9 @@ public class Requests {
 				} else {
 					code = 2;
 				}
-				Electron.response("mega " + code);
+
+				JsonMaetsResponse json = new JsonMaetsResponse("mega", code);
+				Electron.response(json.toString());
 				break;
 			}
 			
