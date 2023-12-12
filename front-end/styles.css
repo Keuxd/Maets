@@ -1,5 +1,5 @@
 @font-face {
-  font-family: my-font;
+  font-family: main-font;
   src: url("./fonts/THEBOLDFONT.ttf");
 }
 
@@ -9,542 +9,315 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     overflow: hidden;
-  }
+}
+
+:root {
+	--theme-current: #FFB800;
+	--theme-default: #FFB800;
+	--theme-wendy: #FF006B;
+}
+
+@media (min-width: 800px) {
+
+}
+
+@media (min-width: 1280px) {
+	#loadingScreen {
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    text-align: center;
+	    padding: 0;
+	    margin: 0;
+	    opacity: 0.8;
+	    transition: opacity 0.5s ease;
+	    background-color: #353535;
+	    z-index: 2;
+  	}
   
-  h1 {
-    text-align: left;
-    font-size: 24px;
-  }
-
-  #logincard {
-      position: relative;
-      display: inline;
-      justify-content: center;
-      background-color: #363636;
-      margin: auto;
-      padding: 0;
-      width: 305px;
-      height: 433px;
-      box-shadow: 6px 7px 12px rgba(0, 0, 0, 0.4);
-      z-index: 1;
-  }
-
-  #title {
-    font-size: 50px;
-    text-align: center;
-    pointer-events: none;
-    user-select: none;
-    padding: 0;
-    color: #e0d921;
-    font-family: "my-font";
-  }
-
-  #subtitle {
-    font-size: 14.4px;
-    text-align: center;
-    pointer-events: none;
-    user-select: none;
-    padding: 0px;
-    margin-top: -4.5vh;
-    margin-bottom: 4vh;
-    color: #a0a0a0;
-    font-family: "my-font";
-  }
-
-  .attfield {
-    font-family: "my-font";
-    pointer-events: none;
-    user-select: none;
-    color: #e7e7e7;
-    padding: 2vh;
-    padding-top: 6vh;
-    margin-left: 6vh;
-    margin-top: 2vh;
-    margin-bottom: 50px;
-  }
-
-  .attinput{
-    border: 1px solid #5e5e5e;
-    border-radius: 8px;
-    background-color: #5e5e5e;
-    color: white;
-    padding: 1.5vh;
-    outline: none;
-    outline-width: 0.5px;
-    margin-left: 8vh;
-    margin-bottom: 4vh;
-    transition: background-color 0.4s;
-  }
-
-  .attinput:hover {
-    filter: brightness(80%)
-  }
-
-  .attscreen:hover {
-    filter: saturate(70%) brightness(90%);
-  }
-
-  .attscreen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-left: 8vh;
-    border: 6px solid #5e5e5e;
-    border-radius: 8px;
-    color: #e7e7e7;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    padding-right: 6vh;
-    padding-left: 6vh;
-    font-family: "my-font";
-    user-select: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
+    #loadtext {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-top: 60px;
+	    transform: translate(-50%, -50%);
+	    text-align: center;
+	    font-size: 18px;
+	    text-align: center;
+	    color: #fff837;
+	    font-family: "main-font";
+	    animation: text-color 6s ease-in-out infinite;
+  	}
+  	
+  	@keyframes text-color {
+	    100%,
+	    0% {
+	      stroke: #fffa7a;
+	    }
+	    20% {
+	      stroke: #e0d921;
+	    }
+	    40% {
+	      stroke: #fff9b3
+	    }
+	    80% {
+	      stroke: #fff36a
+	    }
+	    100% {
+	      stroke: #fff70b;
+	    }
+  	}
+  	
+  	.circular {
+	    animation: rotate 2s linear infinite;
+	    height: 100px;
+	    transform-origin: center center;
+	    width: 100px;
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	    z-index: 0;
+  	}
+  	
+  	@keyframes rotate {
+    	100% {
+      		transform: rotate(360deg);
+    	}
+  	}
   
-  #loginButton {
-    background-color: #5e5e5e;
-    font-size: 32px;
-    user-select: none;
-  }
-  
-  #logoutButton {
-    border: 6px solid #5e5e5e;
-    border-radius: 8px;
-    background-color: #5e5e5e;
-    color: #e7e7e7;
-    font-family: "my-font";
-    font-size: 20px;
-    bottom: -183px;
-    right: -46px;
-    cursor: pointer;
-    transform: rotate(90deg);
-    position: relative;
-  }
-  
-  #exitButton {
-	border: 6px solid #5e5e5e;
-	border-radius: 8px;
-	background-color: #5e5e5e;
-	color: #e7e7e7;
-	font-family: "my-font";
-	font-size: 20px;
-	position: relative;
-	bottom: -271px;
-	right: 36px;
-	cursor: pointer;
-	transform: rotate(90deg); 
-  }
-  
-  #loadingScreen {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    opacity: 0.8;
-    transition: opacity 0.5s ease;
-    background-color: #353535;
-    backdrop-filter: blur(20px);
-    z-index: 2;
-  }
+  	.path {
+	  	stroke-dasharray: 1, 200;
+    	stroke-dashoffset: 0;
+    	animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    	stroke-linecap: round;
+  	}
+  	
+  	@keyframes dash {
+    	0% {
+      		stroke-dasharray: 1, 200;
+      		stroke-dashoffset: 0;
+    	}
+    	50% {
+      		stroke-dasharray: 89, 200;
+      		stroke-dashoffset: -35px;
+    	}
+    	100% {
+      		stroke-dasharray: 89, 200;
+      		stroke-dashoffset: -124px;
+    	}
+ 	 }
+ 	 
+ 	@keyframes color {
+	    100%,
+	    0% {
+	      stroke: #fffa7a;
+	    }
+	    20% {
+	      stroke: #e0d921;
+	    }
+	    40% {
+	      stroke: #fff9b3
+	    }
+	    80% {
+	      stroke: #fff36a
+	    }
+	    100% {
+	      stroke: #fff70b;
+	    }
+	}
+  	
 
-  #loadtext {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: 60px;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 18px;
-    text-align: center;
-    color: #fff837;
-    font-family: "my-font";
-    animation: text-color 6s ease-in-out infinite;
-  }
-  
-  #gameBackground {
-	  position: relative;
-	  width: 700px;
-	  right: -40px;
-	  bottom: -40px;
-	  border: 3px #E0D921;
-	  border-style: solid;
-  }
-  
-  #gameDescription {
-	  font-family: "my-font";
-	  font-size: 16px;
-	  position: absolute;
-	  bottom: 0px;
-	  right: -40px;
-	  margin-right: 80px;
-	  margin-left: 40px;
-	  background-color: #e0d921;
-  }
-  
-  #gameButtons a {
-	  font-family: "my-font";
-	  font-size: 30px;
-	  position: absolute;
-	  color: whitesmoke;
-	  bottom: -24px;
-	  right: 70px;
-  }
-  
-  #gameButtons {
-	  float: right;
-	  animation: slideRight 0.3s ease-in-out forwards;
-  }
-  
-  #gameButtons button {
-	  width: 374px;
-	  background-color: #e0d921;
-	  border: 6px solid #e0d921;
-	  border-radius: 40px;
-	  color: rgb(0, 0, 0);
-	  font-family: "my-font";
-	  font-size: 35px;
-	  position: relative;
-	  cursor: pointer;
-	  right: 4px;
-	  top: 80px;
-	  box-sizing: border-box;
-  }
-  
-  #gameButtons button:hover {
-	  background-color: #a6a119;
-	  border-color: #a6a119;
-	  transition: 0.3s;
-  }
+	
+	.side-bar {
+		position: relative;
+		width: 148px;
+		height: 720px;
+		background: var(--theme-current);
+		overflow: hidden;
+	}
+	
+	#side-bar-r {
+		left: 1132px;
+		bottom: 720px;
+	}
+	
+	.side-bar .stripe {
+		position: relative;
+		margin-bottom: 50px;
+		bottom: -430px;
+		left: -50px;
+		width: 250px;
+		height: 40px;
+		transform: rotate(30deg);
+		background: #030E2A;
+	}
+	
+	.support-side-bar {
+		left: 148px;
+		bottom: 1440px;
+		position: relative;
+		width: 108px;
+		height: 720px;
+		background: #5D60AD;	
+	}
+	
+	#support-side-bar-r {
+		left: 1024px;
+		bottom: 2160px;
+	}
+	
+	.login-card-titles {
+		top: 30px;
+		left: 50%;
+		transform: translate(-50%, 0);
+		width: 386px;
+		height: 49px;
+		color: #FFB800;
+		text-align: center;
+		font-family: main-font;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		position: fixed;
+	}
+	
+	#login-card-title {
+		font-size: 40px;
+	}
+	
+	#login-card-subtitle {
+		font-size: 30px;
+		margin-top: 80px;
+	}
+	
+	#login-form {
+		position: fixed;
+		margin-top: 50px;
+		left: 50%;
+		top: 52%;
+		transform: translate(-50%, -50%);
+		width: 400px;
+		height: 383px;
+		background: #5D60AD;
+		border-radius: 10px;		
+	}
 
-  @keyframes slideRight {
-	  0% {
-		  transform: translateX(374px);
-	  }
-	  100% {
-		  transform: translateX(65px);
-	  }
-  }
+	#login-form h1 {
+		margin-left: 20px;
+		margin-bottom: 10px;
+		font-family: main-font;
+		font-size: 25px;
+		color: #030E2A;
+	}
+	
+	#login-form input {
+		margin-left: 20px;
+		width: 316px;
+		padding: 7px 18px;
+		border-radius: 10px;
+		background: #030E2A;
+		color: var(--theme-current);
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 16px;
+		border: white;
+	}
+	
+	#login-form input:hover {
+		animation: mymove 0.4s forwards;
+	}
+	
+	@keyframes mymove {
+		100% {box-shadow: var(--theme-current) 0px 0px 0px 3px, var(--theme-current) 0px 0px 0px 6px;}
+	}
+	
+	#login-form input:focus {
+		box-shadow: 0px 0px 0px 6px var(--theme-current);
+		outline: none;
+	}
+	
+	.login-form-button {
+		position: relative;
+		top: 22px;
+		font-family: main-font;
+		font-size: 32px;
+		margin-left: 20px;
+		width: 352px;
+		border-radius: 10px;
+		color: #030E2A;
+		border: 4px solid #030E2A;
+		background: #5D60AD;
+		transition: 0.4s;
+	}
+	
+	.login-form-button:hover {
+		color: #FFB800;
+		background-color: #030E2A;
+		cursor: pointer;
+	}
+	
+	#login-form-detail-r {
+		left: 260px;
+	}
+	
+	#login-form-details div {
+		left: 120px;
+		top: 46px;
+		position: relative;
+		font-family: main-font;
+		font-size: 16px;
+		color: #030E2A;
+	}
+	
+	#login-form-details h2 {
+		position: fixed;
+		top: 254px;
+		width: 90px;
+		margin-left: 20px;
+		height: 6px;
+		border-radius: 10px;
+		background: #030E2A;
+	}
+	
+	#signup-button {
+		margin-top: 49px;
+	}
+	
+	#cloud-service {
+		position: fixed;
+		top: -53px;
+	}
+	
+	#cloud-service button {
+		border-radius: 10px 10px 0px 0px;
+		background: #5D60AD;
+		border: none;
+		margin-left: 81px;
+	}
+	
+	#cloud-service img {
+		transition: 0.3s;
+		height: 50px;
+		padding: 5px;
+	}
+	
+	.cloud-service-image {
+		filter: grayscale(1);
+	}
+		
+	.cloud-service-image:hover {
+		filter: grayscale(0.8);
+	}
+	
+	.cloud-service-image:active {
+		filter: grayscale(0.5);
+	}
+	
+	
+	
+	
+	
+}
 
-  @keyframes text-color {
-    100%,
-    0% {
-      stroke: #fffa7a;
-    }
-    20% {
-      stroke: #e0d921;
-    }
-    40% {
-      stroke: #fff9b3
-    }
-    80% {
-      stroke: #fff36a
-    }
-    100% {
-      stroke: #fff70b;
-    }
-  }
-
-  .circular {
-    animation: rotate 2s linear infinite;
-    height: 100px;
-    transform-origin: center center;
-    width: 100px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 0;
-    display: block;
-  }
-  
-  .path {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
-    stroke-linecap: round;
-  }
-  
-  @keyframes rotate {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes dash {
-    0% {
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      stroke-dasharray: 89, 200;
-      stroke-dashoffset: -35px;
-    }
-    100% {
-      stroke-dasharray: 89, 200;
-      stroke-dashoffset: -124px;
-    }
-  }
-  
-  @keyframes color {
-    100%,
-    0% {
-      stroke: #fffa7a;
-    }
-    20% {
-      stroke: #e0d921;
-    }
-    40% {
-      stroke: #fff9b3
-    }
-    80% {
-      stroke: #fff36a
-    }
-    100% {
-      stroke: #fff70b;
-    }
-  }
-
-  #sideHeader {
-    width: 78px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 122px;
-    background-color: #e0d921;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-  }
-    
-  #sideHeader p {
-    transform: rotate(90deg);
-    position: absolute;
-    top: 27px;
-    left: 5.8px;
-    font-family: "my-font";
-    font-size: 38px;
-    color: #1c1c1c;
-  }
-
-  #icon {
-    top: 22px;
-    left: 40px;
-    position: absolute;
-    height: 120px;
-    width: 120px;
-    z-index: 3;
-    border: 2px solid #e0d921;
-    border-radius: 2px;
-  }
-
-  #button1 {
-    top: 38%;
-    left: 130px;
-    position: absolute;
-    height: 50px;
-    width: auto;
-    z-index: 3;
-    cursor: pointer;
-  }
-
-  #button2 {
-    top: 50%;
-    left: 136px;
-    position: absolute;
-    height: 55px;
-    width: auto;
-    z-index: 3;
-    cursor: pointer;
-  }
-
-  #button3 {
-    top: 62%;
-    left: 133px;
-    position: absolute;
-    height: 56px;
-    width: auto;
-    z-index: 3;
-    cursor: pointer;
-  }
-
-  #library {
-    font-size: 50px;
-    font-family: "my-font";
-    top: 200px;
-    left: 400px;
-    color: white;
-    position: absolute;
-  }
-
-  #homepage {
-    font-size: 50px;
-    font-family: "my-font";
-    color: #e0d921;
-    margin-left: 135px;
-    margin-top: -70px;
-    position: absolute;
-  }
-
-  #abtus {
-    font-size: 27px;
-    font-family: "my-font";
-    text-align: center;
-    color: #ffffff;
-    margin-top: 45px;
-    position: absolute;
-  }
-
-  #about1 {
-    width: 500px;
-    height: 225px;
-    position: relative;
-    padding: 10px;
-    right: -250px;
-    bottom: -75px;
-    background-color: #353535;
-  }
-  
-  #about2 {
-    width: 500px;
-    height: 225px;
-    position: relative;
-    padding: 10px;
-    right: -250px;
-    bottom: -135px;
-    background-color: #353535;
-  }
-
-  #homepage2 {
-    font-size: 50px;
-    font-family: "my-font";
-    color: #e0d921;
-    margin-left: 105px;
-    margin-top: -70px;
-    position: absolute;
-  }
-
-  #patchVer {
-    font-size: 27px;
-    font-family: "my-font";
-    color: #e0d921;
-    margin-top: -10px;
-    position: absolute;
-  }
-
-  #patchNote {
-    font-size: 27px;
-    font-family: "my-font";
-    text-align: center;
-    color: #ffffff;
-    margin-top: 53px;
-    margin-left: 40px;
-    position: absolute;
-  }
-
-  #shop {
-    display: flex;
-    position: absolute;
-    width: 87%;
-    height: 720px;
-    margin-left: 13%;
-    margin-right: auto;
-    padding: 0;
-    border: 0;
-    top: 0;
-    left: 0;
-    z-index: 1;
-  }
-  
-  #container {
-	background-repeat: no-repeat;
-	position: relative;
-	right: -200px;
-	top: -37px;
-	width: 1080px;
-	height: 100%;
-  }
-  
-  #backgroundImageContainer {
-	  background-repeat: no-repeat;
-	  background-position: center;
-	  background-size: cover;
-	  width: 100%;
-	  height: 100%;
-	  filter: blur(4px);
-	  position: absolute;
-	  z-index: -1;
-  }
-
-  .shopDivs, .shopTitles {
-    position: relative;
-    justify-content: center;
-    font-size: 22px;
-    font-family: "my-font";
-    color: #e0d921;
-    z-index: 4;
-    margin-left: 220px;
-  }
-
-  .shopTitles {
-    margin-left: 0px;
-  }
-
-  .shopDescs {
-    text-align: justify;
-    text-overflow: ellipsis;
-    width: 370px; 
-    font-size: 18px;
-    margin-left: 10px;
-    color: white;
-  }
-  
-  .product-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-	position: relative;
-  	margin: 0;
-  	right: -35px;
-  }
-
-  .product-list li {
-    margin: 10px;
-	width: 315px;
-	height: 100%;
-  }
-
-  .product-list a {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-	cursor: pointer;
-  }
-
-  .product-list img {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 5px;
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  .product-name {
-    display: block;
-    font-weight: bold;
-    font-family: "my-font";
-  }
-  
-  .product-list a:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-  }
