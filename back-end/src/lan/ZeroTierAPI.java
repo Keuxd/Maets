@@ -9,6 +9,7 @@ import com.google.gson.JsonParser;
 public class ZeroTierAPI {
 
 	private static String API = "https://api.zerotier.com/api/v1";
+	public static String SECRET_VALUE = "";
 	
 	private static HttpRequest generateDefaultRequest(String endPoint) throws IOException {
 		URL url = new URL(API + endPoint);
