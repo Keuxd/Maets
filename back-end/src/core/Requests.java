@@ -32,7 +32,9 @@ public class Requests {
 			
 			case "isLoggedIn": {
 				int code = Mega.run(CommandsEnum.USERS);
-				Electron.response("isLoggedIn " + (code == 0));
+				
+				JsonMaetsResponse json = new JsonMaetsResponse("isLoggedIn", (code == 0));
+				Electron.response(json.toString());
 				break;
 			}
 			
