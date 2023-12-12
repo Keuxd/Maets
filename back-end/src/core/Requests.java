@@ -61,9 +61,11 @@ public class Requests {
 			}
 			
 			case "lastName" : {
-				int code = Mega.run(CommandsEnum.USERATTR, "lastname");
+				Mega.run(CommandsEnum.USERATTR, "lastname");
 				String lastName = Mega.lastOutput.split(" ")[3];
-				Electron.response("lastName " + lastName);
+				
+				JsonMaetsResponse json = new JsonMaetsResponse("lastName", lastName);
+				Electron.response(json.toString());
 				break;
 			}
 			
